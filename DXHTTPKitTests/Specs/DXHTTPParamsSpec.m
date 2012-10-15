@@ -60,7 +60,7 @@ describe(@"Form params", ^{
     });
     
     context(@"File params", ^{
-        it(@"Should accept file params", ^{
+        it(@"Should accept binary param types", ^{
             DXHTTPFormFileDescriptor *fd = [DXHTTPFormFileDescriptor new];
             [[theBlock(^{
                 DXHTTPFormParam *keyParams __attribute__((unused)) = [[DXHTTPFormParam alloc] initWithKey:testKey value:fd];
