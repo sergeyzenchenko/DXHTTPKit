@@ -33,8 +33,9 @@ describe(@"Basic key param", ^{
         [[theBlock(^{
             DXHTTPParamKey *keyParams __attribute__((unused)) = [[DXHTTPParamKey alloc] initWithKey:nil];
         }) should] raiseWithName:NSInternalInconsistencyException];
-        
     });
+    
+    pending(@"Should escape value string");
 });
 
 describe(@"Form params", ^{
