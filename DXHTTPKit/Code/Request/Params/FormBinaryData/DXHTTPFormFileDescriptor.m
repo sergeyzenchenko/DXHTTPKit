@@ -1,13 +1,13 @@
 //
-//  DXHTTPKit.h
+//  DXHTTPFormFileDescriptor.m
 //  DXHTTPKit
 //
 //  Created by Sergey Zenchenko on 10/15/12.
 //  Copyright (c) 2012 111Minutes. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "DXHTTPFormFileDescriptor.h"
 
-@interface DXHTTPKit : NSObject
+@implementation DXHTTPFormFileDescriptor
 
 @end

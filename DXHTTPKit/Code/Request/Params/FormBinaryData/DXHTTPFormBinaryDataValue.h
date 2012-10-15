@@ -1,13 +1,13 @@
 //
-//  DXHTTPKit.m
+//  DXHTTPFormBinaryDataValue.h
 //  DXHTTPKit
 //
 //  Created by Sergey Zenchenko on 10/15/12.
 //  Copyright (c) 2012 111Minutes. All rights reserved.
 //
 
-#import "DXHTTPKit.h"
+#import <Foundation/Foundation.h>
 
-@implementation DXHTTPKit
+@protocol DXHTTPFormBinaryDataValue <NSObject>
 
 @end
