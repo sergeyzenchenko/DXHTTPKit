@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 111Minutes. All rights reserved.
 //
 
-#import "DXHTTPParam.h"
+#import "DXHTTPParamKey.h"
 
-@interface DXHTTPParam ()
+@interface DXHTTPParamKey ()
 
 @property (nonatomic, copy, readwrite) NSString *key;
 
 @end
 
-@implementation DXHTTPParam
+@implementation DXHTTPParamKey
 
 - (id)initWithKey:(NSString*)aKey
 {

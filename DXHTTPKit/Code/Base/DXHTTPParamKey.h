@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DXHTTPParam : NSObject
+@interface DXHTTPParamKey : NSObject
 
 @property (nonatomic, copy, readonly) NSString *key;
 

@@ -7,7 +7,7 @@
 //
 
 #import <Kiwi/Kiwi.h>
-#import "DXHTTPParam.h"
+#import "DXHTTPParamKey.h"
 #import "DXHTTPFormParam.h"
 #import "DXHTTPFormFileDescriptor.h"
 
@@ -18,20 +18,20 @@ NSString *testKey = @"testKey";
 describe(@"Basic key param", ^{
     it(@"Should keep key value", ^{
         
-        DXHTTPParam *keyParam = [[DXHTTPParam alloc] initWithKey:testKey];
+        DXHTTPParamKey *keyParam = [[DXHTTPParamKey alloc] initWithKey:testKey];
         
         [[keyParam.key should] equal:testKey];
     });
     
     it(@"Should throw exception in case of non string key type", ^{
        [[theBlock(^{
-           DXHTTPParam *keyParams __attribute__((unused)) = [[DXHTTPParam alloc] initWithKey:(NSString*)@[]];
+           DXHTTPParamKey *keyParams __attribute__((unused)) = [[DXHTTPParamKey alloc] initWithKey:(NSString*)@[]];
        }) should] raiseWithName:NSInternalInconsistencyException];
     });
     
     it(@"Should throw exception in case of non nil key", ^{
         [[theBlock(^{
-            DXHTTPParam *keyParams __attribute__((unused)) = [[DXHTTPParam alloc] initWithKey:nil];
+            DXHTTPParamKey *keyParams __attribute__((unused)) = [[DXHTTPParamKey alloc] initWithKey:nil];
         }) should] raiseWithName:NSInternalInconsistencyException];
         
     });
