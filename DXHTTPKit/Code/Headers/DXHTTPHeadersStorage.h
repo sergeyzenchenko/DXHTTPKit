@@ -12,7 +12,5 @@
 
 @property (nonatomic, strong, readonly) NSMutableDictionary *headers;
 
-- (DXHTTPHeadersStorage *)initWithHeader:(NSString *)aKey value:(NSArray *)aValue;
-
 - (void)addHeader:(NSString *)aHeaderKey value:(NSArray *)aValue;
 @end

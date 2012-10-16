@@ -8,21 +8,47 @@
 
 #import "DXRequestParams.h"
 
-@interface DXRequestParams() {
-    NSArray *_allowedRequestsList;
+static BOOL HTTPMethodIsValid(NSString *method)
+{
+    static const int numberOfMethods = 5;
+    NSString *methods[numberOfMethods] = {
+        DXHTTPMethod.GET,
+        DXHTTPMethod.POST,
+        DXHTTPMethod.PUT,
+        DXHTTPMethod.DELETE,
+        DXHTTPMethod.HEAD
+    };
+    for (int i = 0 ; i < numberOfMethods; i++) {
+        if (methods[i] == method) {
+            return YES;
+        }
+    }
+    return NO;
 }
+
+const struct DXHTTPMethod DXHTTPMethod = {
+    .GET = @"GET",
+    .POST = @"POST",
+    .PUT = @"PUT",
+    .DELETE = @"DELETE",
+    .HEAD = @"HEAD",
+    .isValid = HTTPMethodIsValid
+};
+
+@interface DXRequestParams()
+
 @property (nonatomic, readwrite) NSMutableArray *params;
 @property (nonatomic, readwrite) DXHTTPHeadersStorage *headersStorage;
 @end
 
 @implementation DXRequestParams
 
-- (DXRequestParams *)init {
+
+- (id)init {
     self = [super init];
     if(self) {
         self.params = [[NSMutableArray alloc] init];
         self.headersStorage = [[DXHTTPHeadersStorage alloc] init];
-        _allowedRequestsList = @[@"GET", @"POST", @"PUT", @"DELETE", @"HEAD"];
     }
     return self;
 }
@@ -39,8 +65,9 @@
 }
 
 - (void)setHttpMethod:(NSString *)aHttpMethod {
-    NSParameterAssert([_allowedRequestsList containsObject:aHttpMethod]);
     
-    _httpMethod = aHttpMethod;
+    DXParametrAssert(HTTPMethodIsValid(aHttpMethod), @"Invalid HTTP Method");
+
+        _httpMethod = aHttpMethod;
 }
 @end

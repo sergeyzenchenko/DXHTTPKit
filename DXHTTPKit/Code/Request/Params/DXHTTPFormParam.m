@@ -17,7 +17,7 @@
 
 @implementation DXHTTPFormParam
 
-- (DXHTTPFormParam *)initWithKey:(NSString *)aKey value:(id)aValue {
+- (id)initWithKey:(NSString *)aKey value:(id)aValue {
     
     NSParameterAssert(aKey != nil);
     NSParameterAssert([aKey isKindOfClass:[NSString class]]);

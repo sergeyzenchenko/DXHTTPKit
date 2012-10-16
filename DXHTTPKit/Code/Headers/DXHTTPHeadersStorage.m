@@ -16,16 +16,6 @@
 
 @implementation DXHTTPHeadersStorage
 
-- (DXHTTPHeadersStorage *)initWithHeader:(NSString *)aKey value:(NSArray *)aValue {
-    NSParameterAssert([aValue isKindOfClass:[NSString class]]);
-    
-    self = [super init];
-    if (self) {
-        _headers = [NSMutableDictionary dictionaryWithObject:aValue forKey:aKey];
-    }
-    return self;
-}
-
 - (void)addHeader:(NSString *)aHeaderKey value:(NSArray *)aValue {
     
     NSParameterAssert([aHeaderKey isKindOfClass:[NSString class]]);

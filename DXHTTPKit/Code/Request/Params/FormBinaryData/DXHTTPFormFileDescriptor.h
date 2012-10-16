@@ -12,8 +12,8 @@
 
 @property (nonatomic, copy, readonly) NSString *filePath;
 
-- (DXHTTPFormFileDescriptor *)initWithFilePath:(NSString *)filePath;
+- (id)initWithFilePath:(NSString *)filePath;
 
-+ (DXHTTPFormFileDescriptor *)fileDescriptorWithPath:(NSString *)pathToFile;
++ (id)fileDescriptorWithPath:(NSString *)pathToFile;
 
 @end

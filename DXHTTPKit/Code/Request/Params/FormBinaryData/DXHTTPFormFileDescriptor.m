@@ -16,7 +16,7 @@
 
 @implementation DXHTTPFormFileDescriptor
 
-- (DXHTTPFormFileDescriptor *)initWithFilePath:(NSString *)aFilePath {
+- (id)initWithFilePath:(NSString *)aFilePath {
     self = [super init];
     if(self) {
         self.filePath = aFilePath;
@@ -24,7 +24,7 @@
     return self;
 }
 
-+ (DXHTTPFormFileDescriptor *)fileDescriptorWithPath:(NSString *)aFilePath {
++ (id)fileDescriptorWithPath:(NSString *)aFilePath {
     return [[DXHTTPFormFileDescriptor alloc] initWithFilePath:aFilePath];
 }
 

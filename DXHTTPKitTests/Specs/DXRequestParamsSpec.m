@@ -18,7 +18,7 @@ describe(@"RequestParams", ^{
         });
         
         it(@"Should accept value as httpMethod instance", ^{
-            requestParams.httpMethod = @"POST";
+            requestParams.httpMethod = DXHTTPMethod.POST;
             [[theValue(requestParams.httpMethod) should] equal:theValue(@"POST")];
         });
     });

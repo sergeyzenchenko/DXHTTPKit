@@ -4,4 +4,5 @@
 
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
+#define DXParametrAssert(expr, exception_name) do { if (!(expr)) @throw [NSException exceptionWithName:exception_name reason: [NSString stringWithFormat:@"Expression: %s", #expr] userInfo:nil]; } while (0)
 #endif

@@ -11,6 +11,16 @@
 #import "DXHTTPHeadersStorage.h"
 #import "DXHTTPFormFileDescriptor.h"
 
+extern const struct DXHTTPMethod
+{
+    __unsafe_unretained NSString *GET;
+    __unsafe_unretained NSString *POST;
+    __unsafe_unretained NSString *PUT;
+    __unsafe_unretained NSString *DELETE;
+    __unsafe_unretained NSString *HEAD;
+    BOOL (*isValid)(NSString *method);
+} DXHTTPMethod;
+
 @interface DXRequestParams : DXHTTPParamKey
 
 @property (nonatomic, readonly) NSMutableArray *params;
