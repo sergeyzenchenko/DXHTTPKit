@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DXHTTPFormFileDescriptor.h"
 #import "DXHTTPParamKey.h"
 
 @interface DXHTTPFormParam : DXHTTPParamKey

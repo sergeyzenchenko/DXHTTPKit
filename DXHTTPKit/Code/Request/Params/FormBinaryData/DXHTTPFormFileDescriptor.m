@@ -1,13 +1,43 @@
 //
-//  DXHTTPFormFileDescriptor.m
+//  DXFile.m
 //  DXHTTPKit
 //
-//  Created by Sergey Zenchenko on 10/15/12.
-//  Copyright (c) 2012 111Minutes. All rights reserved.
+//  Created by TheSooth on 10/14/12.
+//  Copyright (c) 2012 TheSooth. All rights reserved.
 //
 
 #import "DXHTTPFormFileDescriptor.h"
 
+@interface DXHTTPFormFileDescriptor()
+
+@property (nonatomic, copy, readwrite) NSString *filePath;
+
+@end
+
 @implementation DXHTTPFormFileDescriptor
+
+- (DXHTTPFormFileDescriptor *)initWithFilePath:(NSString *)aFilePath {
+    self = [super init];
+    if(self) {
+        self.filePath = aFilePath;
+    }
+    return self;
+}
+
++ (DXHTTPFormFileDescriptor *)fileDescriptorWithPath:(NSString *)aFilePath {
+    return [[DXHTTPFormFileDescriptor alloc] initWithFilePath:aFilePath];
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+    
+    if (copy) {
+        [copy setFilePath:self.filePath];
+    }
+    
+    return copy;
+}
+
 
 @end

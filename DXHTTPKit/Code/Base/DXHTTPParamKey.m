@@ -1,31 +1,32 @@
 //
-//  DXHTTPParam.m
+//  DXParam.m
 //  DXHTTPKit
 //
-//  Created by Sergey Zenchenko on 10/15/12.
-//  Copyright (c) 2012 111Minutes. All rights reserved.
+//  Created by TheSooth on 10/14/12.
+//  Copyright (c) 2012 TheSooth. All rights reserved.
 //
 
 #import "DXHTTPParamKey.h"
-
-@interface DXHTTPParamKey ()
-
-@property (nonatomic, copy, readwrite) NSString *key;
-
-@end
+#import "DXHTTPFormFileDescriptor.h"
 
 @implementation DXHTTPParamKey
 
-- (id)initWithKey:(NSString*)aKey
-{
-    NSParameterAssert(aKey != nil);
-    NSParameterAssert([aKey isKindOfClass:[NSString class]]);
-    
-    self = [super init];
-    if (self) {
-        self.key = aKey;
-    }
-    return self;
++ (NSArray *)allowedClassesForValueField {
+    static NSArray *allowedClasses = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        allowedClasses = @[[NSString class], [DXHTTPFormFileDescriptor class]];
+    });
+    return allowedClasses;
 }
 
++ (BOOL)isAllowedClassForValueField:(Class)valueFieldClass {
+    NSArray *allowedClasses = [self allowedClassesForValueField];
+    for(int i = 0; i < [allowedClasses count]; ++i) {
+        if([[valueFieldClass class] isSubclassOfClass:[allowedClasses[i] class]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 @end
