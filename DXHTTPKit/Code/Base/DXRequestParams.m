@@ -36,9 +36,9 @@ const struct DXHTTPMethod DXHTTPMethod = {
     .isValid = DXHTTPMethodIsValid
 };
 
-@interface DXRequestParams()
-
-@property (nonatomic, readwrite) NSMutableArray *params;
+@interface DXRequestParams() {
+     NSMutableArray *_params;
+}
 @property (nonatomic, readwrite) DXHTTPHeadersStorage *headersStorage;
 @end
 
@@ -48,7 +48,7 @@ const struct DXHTTPMethod DXHTTPMethod = {
 - (id)init {
     self = [super init];
     if(self) {
-        self.params = [[NSMutableArray alloc] init];
+        _params = [[NSMutableArray alloc] init];
         self.headersStorage = [[DXHTTPHeadersStorage alloc] init];
     }
     return self;
@@ -57,7 +57,7 @@ const struct DXHTTPMethod DXHTTPMethod = {
 - (void)addParam:(NSString *)key value:(id)value {
     DXHTTPFormParam *param = [[DXHTTPFormParam alloc] initWithKey: key value:value];
     
-    [self.params addObject:param];
+    [_params addObject:param];
 }
 
 
@@ -70,5 +70,9 @@ const struct DXHTTPMethod DXHTTPMethod = {
     DXParametrAssert(DXHTTPMethodIsValid(aHttpMethod), DXHTTPErrors.HTTPInvalidMethod);
 
         _httpMethod = aHttpMethod;
+}
+
+- (NSArray*) params {
+    return [_params copy];
 }
 @end
