@@ -7,8 +7,9 @@
 //
 
 #import "DXRequestParams.h"
+#import "DXHTTPErrors.h"
 
-static BOOL HTTPMethodIsValid(NSString *method)
+static BOOL DXHTTPMethodIsValid(NSString *method)
 {
     static const int numberOfMethods = 5;
     NSString *methods[numberOfMethods] = {
@@ -32,7 +33,7 @@ const struct DXHTTPMethod DXHTTPMethod = {
     .PUT = @"PUT",
     .DELETE = @"DELETE",
     .HEAD = @"HEAD",
-    .isValid = HTTPMethodIsValid
+    .isValid = DXHTTPMethodIsValid
 };
 
 @interface DXRequestParams()
@@ -66,7 +67,7 @@ const struct DXHTTPMethod DXHTTPMethod = {
 
 - (void)setHttpMethod:(NSString *)aHttpMethod {
     
-    DXParametrAssert(HTTPMethodIsValid(aHttpMethod), @"Invalid HTTP Method");
+    DXParametrAssert(DXHTTPMethodIsValid(aHttpMethod), DXHTTPErrors.HTTPInvalidMethod);
 
         _httpMethod = aHttpMethod;
 }

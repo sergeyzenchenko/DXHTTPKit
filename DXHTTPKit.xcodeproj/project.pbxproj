@@ -59,6 +59,7 @@
 		ADFB0AD2162C99AB00AC5954 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADFB0ADA162C99AB00AC5954 /* DXHTTPKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DXHTTPKitTests-Info.plist"; sourceTree = "<group>"; };
 		ADFB0ADC162C99AB00AC5954 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPErrors.h; sourceTree = "<group>"; };
 		EAB5F438162D869900A7E403 /* DXRequestParamsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXRequestParamsSpec.m; sourceTree = "<group>"; };
 		EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPFormParamSpec.m; sourceTree = "<group>"; };
 		EAB5F43A162D869900A7E403 /* DXHTTPHeadersStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPHeadersStorageSpec.m; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 				EAB5F44C162D873E00A7E403 /* DXRequestParams.h */,
 				EAB5F44D162D873E00A7E403 /* DXRequestParams.m */,
 				EAB5F440162D86C700A7E403 /* DXHTTPParamKey.h */,
+				EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */,
 				EAB5F441162D86C700A7E403 /* DXHTTPParamKey.m */,
 			);
 			path = Base;
