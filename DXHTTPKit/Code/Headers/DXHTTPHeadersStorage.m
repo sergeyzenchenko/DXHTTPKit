@@ -53,7 +53,7 @@
         
         if (headerValue) {
             for(NSInteger i = 0; i < [aValuesArray count]; ++i)
-                [headerValue addObject:[aValuesArray objectAtIndex:i]];
+                [headerValue addObject:aValuesArray[i]];
             [_headers setObject:headerValue forKey:aHeaderKey];
         } else {
             [_headers setObject:aValuesArray forKey:aHeaderKey];
