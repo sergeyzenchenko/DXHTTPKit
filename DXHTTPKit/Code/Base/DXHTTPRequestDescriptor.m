@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 TheSooth. All rights reserved.
 //
 
-#import "DXRequestParams.h"
+#import "DXHTTPRequestDescriptor.h"
 #import "DXHTTPErrors.h"
 
 static BOOL DXHTTPMethodIsValid(NSString *method)
@@ -36,13 +36,13 @@ const struct DXHTTPMethod DXHTTPMethod = {
     .isValid = DXHTTPMethodIsValid
 };
 
-@interface DXRequestParams() {
+@interface DXHTTPRequestDescriptor() {
      NSMutableArray *_params;
 }
 @property (nonatomic, readwrite) DXHTTPHeadersStorage *headersStorage;
 @end
 
-@implementation DXRequestParams
+@implementation DXHTTPRequestDescriptor
 
 
 - (id)init {

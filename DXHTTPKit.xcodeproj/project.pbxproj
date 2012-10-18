@@ -14,6 +14,10 @@
 		ADFB0AD4162C99AB00AC5954 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFB0AC1162C99AB00AC5954 /* Foundation.framework */; };
 		ADFB0AD7162C99AB00AC5954 /* libDXHTTPKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFB0ABE162C99AB00AC5954 /* libDXHTTPKit.a */; };
 		ADFB0ADD162C99AB00AC5954 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ADFB0ADB162C99AB00AC5954 /* InfoPlist.strings */; };
+		EA76B4E516309D2E004B85CA /* DXHTTPRequestBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4E416309D2E004B85CA /* DXHTTPRequestBuilderSpec.m */; };
+		EA76B4F11630A7D2004B85CA /* DXHTTPRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4F01630A7D2004B85CA /* DXHTTPRequestBuilder.m */; };
+		EA76B4F51630A81E004B85CA /* DXHTTPHeadersBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4F41630A81E004B85CA /* DXHTTPHeadersBuilder.m */; };
+		EA76B4F81630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4F71630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m */; };
 		EAB5F43C162D869900A7E403 /* DXRequestParamsSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F438162D869900A7E403 /* DXRequestParamsSpec.m */; };
 		EAB5F43D162D869900A7E403 /* DXHTTPFormParamSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */; };
 		EAB5F43E162D869900A7E403 /* DXHTTPHeadersStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F43A162D869900A7E403 /* DXHTTPHeadersStorageSpec.m */; };
@@ -21,7 +25,7 @@
 		EAB5F442162D86C700A7E403 /* DXHTTPParamKey.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F441162D86C700A7E403 /* DXHTTPParamKey.m */; };
 		EAB5F445162D86D800A7E403 /* DXHTTPHeadersStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F444162D86D800A7E403 /* DXHTTPHeadersStorage.m */; };
 		EAB5F448162D870200A7E403 /* DXHTTPFormFileDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F447162D870200A7E403 /* DXHTTPFormFileDescriptor.m */; };
-		EAB5F44E162D873E00A7E403 /* DXRequestParams.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F44D162D873E00A7E403 /* DXRequestParams.m */; };
+		EAB5F44E162D873E00A7E403 /* DXHTTPRequestDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F44D162D873E00A7E403 /* DXHTTPRequestDescriptor.m */; };
 		EAB5F451162D8B8F00A7E403 /* DXHTTPFormParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F450162D8B8F00A7E403 /* DXHTTPFormParam.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +63,12 @@
 		ADFB0AD2162C99AB00AC5954 /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		ADFB0ADA162C99AB00AC5954 /* DXHTTPKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DXHTTPKitTests-Info.plist"; sourceTree = "<group>"; };
 		ADFB0ADC162C99AB00AC5954 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA76B4E416309D2E004B85CA /* DXHTTPRequestBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPRequestBuilderSpec.m; sourceTree = "<group>"; };
+		EA76B4EF1630A7D2004B85CA /* DXHTTPRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXHTTPRequestBuilder.h; path = Builders/DXHTTPRequestBuilder/DXHTTPRequestBuilder.h; sourceTree = "<group>"; };
+		EA76B4F01630A7D2004B85CA /* DXHTTPRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXHTTPRequestBuilder.m; path = Builders/DXHTTPRequestBuilder/DXHTTPRequestBuilder.m; sourceTree = "<group>"; };
+		EA76B4F31630A81E004B85CA /* DXHTTPHeadersBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DXHTTPHeadersBuilder.h; path = Builders/DXHTTPHeadersBuilder/DXHTTPHeadersBuilder.h; sourceTree = "<group>"; };
+		EA76B4F41630A81E004B85CA /* DXHTTPHeadersBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXHTTPHeadersBuilder.m; path = Builders/DXHTTPHeadersBuilder/DXHTTPHeadersBuilder.m; sourceTree = "<group>"; };
+		EA76B4F71630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPHeadersBuilderSpec.m; sourceTree = "<group>"; };
 		EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPErrors.h; sourceTree = "<group>"; };
 		EAB5F438162D869900A7E403 /* DXRequestParamsSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXRequestParamsSpec.m; sourceTree = "<group>"; };
 		EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPFormParamSpec.m; sourceTree = "<group>"; };
@@ -70,8 +80,8 @@
 		EAB5F444162D86D800A7E403 /* DXHTTPHeadersStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPHeadersStorage.m; sourceTree = "<group>"; };
 		EAB5F446162D870200A7E403 /* DXHTTPFormFileDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPFormFileDescriptor.h; sourceTree = "<group>"; };
 		EAB5F447162D870200A7E403 /* DXHTTPFormFileDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPFormFileDescriptor.m; sourceTree = "<group>"; };
-		EAB5F44C162D873E00A7E403 /* DXRequestParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXRequestParams.h; sourceTree = "<group>"; };
-		EAB5F44D162D873E00A7E403 /* DXRequestParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXRequestParams.m; sourceTree = "<group>"; };
+		EAB5F44C162D873E00A7E403 /* DXHTTPRequestDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPRequestDescriptor.h; sourceTree = "<group>"; };
+		EAB5F44D162D873E00A7E403 /* DXHTTPRequestDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPRequestDescriptor.m; sourceTree = "<group>"; };
 		EAB5F44F162D8B8F00A7E403 /* DXHTTPFormParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPFormParam.h; sourceTree = "<group>"; };
 		EAB5F450162D8B8F00A7E403 /* DXHTTPFormParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPFormParam.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +117,8 @@
 				EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */,
 				EAB5F43A162D869900A7E403 /* DXHTTPHeadersStorageSpec.m */,
 				EAB5F43B162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m */,
+				EA76B4E416309D2E004B85CA /* DXHTTPRequestBuilderSpec.m */,
+				EA76B4F71630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m */,
 			);
 			path = Specs;
 			sourceTree = "<group>";
@@ -115,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				ADE7EE3F162CA7E10061F3F8 /* Base */,
+				EA76B4E616309E22004B85CA /* Builders */,
 				ADE7EE3E162CA75D0061F3F8 /* Headers */,
 				ADE7EE2E162C9F660061F3F8 /* Request */,
 			);
@@ -161,8 +174,8 @@
 		ADE7EE3F162CA7E10061F3F8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				EAB5F44C162D873E00A7E403 /* DXRequestParams.h */,
-				EAB5F44D162D873E00A7E403 /* DXRequestParams.m */,
+				EAB5F44C162D873E00A7E403 /* DXHTTPRequestDescriptor.h */,
+				EAB5F44D162D873E00A7E403 /* DXHTTPRequestDescriptor.m */,
 				EAB5F440162D86C700A7E403 /* DXHTTPParamKey.h */,
 				EAB5F441162D86C700A7E403 /* DXHTTPParamKey.m */,
 				EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */,
@@ -234,6 +247,33 @@
 				ADFB0ADB162C99AB00AC5954 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA76B4E616309E22004B85CA /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				EA76B4F21630A7E5004B85CA /* DXHTTPHeadersBuilder */,
+				EA76B4EE1630A7AB004B85CA /* DXHTTPRequestBuilder */,
+			);
+			name = Builders;
+			sourceTree = "<group>";
+		};
+		EA76B4EE1630A7AB004B85CA /* DXHTTPRequestBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				EA76B4EF1630A7D2004B85CA /* DXHTTPRequestBuilder.h */,
+				EA76B4F01630A7D2004B85CA /* DXHTTPRequestBuilder.m */,
+			);
+			name = DXHTTPRequestBuilder;
+			sourceTree = "<group>";
+		};
+		EA76B4F21630A7E5004B85CA /* DXHTTPHeadersBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				EA76B4F31630A81E004B85CA /* DXHTTPHeadersBuilder.h */,
+				EA76B4F41630A81E004B85CA /* DXHTTPHeadersBuilder.m */,
+			);
+			name = DXHTTPHeadersBuilder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,8 +393,10 @@
 				EAB5F442162D86C700A7E403 /* DXHTTPParamKey.m in Sources */,
 				EAB5F445162D86D800A7E403 /* DXHTTPHeadersStorage.m in Sources */,
 				EAB5F448162D870200A7E403 /* DXHTTPFormFileDescriptor.m in Sources */,
-				EAB5F44E162D873E00A7E403 /* DXRequestParams.m in Sources */,
+				EAB5F44E162D873E00A7E403 /* DXHTTPRequestDescriptor.m in Sources */,
 				EAB5F451162D8B8F00A7E403 /* DXHTTPFormParam.m in Sources */,
+				EA76B4F11630A7D2004B85CA /* DXHTTPRequestBuilder.m in Sources */,
+				EA76B4F51630A81E004B85CA /* DXHTTPHeadersBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +408,8 @@
 				EAB5F43D162D869900A7E403 /* DXHTTPFormParamSpec.m in Sources */,
 				EAB5F43E162D869900A7E403 /* DXHTTPHeadersStorageSpec.m in Sources */,
 				EAB5F43F162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m in Sources */,
+				EA76B4E516309D2E004B85CA /* DXHTTPRequestBuilderSpec.m in Sources */,
+				EA76B4F81630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

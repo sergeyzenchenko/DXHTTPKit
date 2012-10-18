@@ -1,5 +1,5 @@
 #import "Kiwi.h"
-#import "DXRequestParams.h"
+#import "DXHTTPHeadersStorage.h"
 
 SPEC_BEGIN(DXHTTPHeadersStorageSpec)
 
