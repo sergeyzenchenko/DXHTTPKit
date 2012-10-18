@@ -12,7 +12,5 @@
 
 @property (nonatomic, strong, readonly) NSDictionary *headers;
 
-- (void)addHeader:(NSString *)aHeaderKey valuesArray:(NSArray *)aValuesArray;
-
-- (void)addHeader:(NSString *)aHeaderKey value:(NSString *)aValue;
+- (void)addHeader:(NSString *)aHeaderKey value:(id)aValue;
 @end

@@ -19,12 +19,12 @@ describe(@"Headers Storage", ^{
         });
         
         it(@"Should keep header multipile key and value", ^{
-            [headersStorage addHeader:@"Cookies" valuesArray:@[@"login=111minutes", @"passwd=111min"]];
+            [headersStorage addHeader:@"Cookies" value:@[@"login=111minutes", @"passwd=111min"]];
             [[theValue([headersStorage.headers count]) should] equal:theValue(2)];
         });
         
         it(@"Should keep header exists value should append new value", ^{
-            [headersStorage addHeader:@"Cookies" valuesArray:@[@"userpath=/", @"projectsCount=5"]];
+            [headersStorage addHeader:@"Cookies" value:@[@"userpath=/", @"projectsCount=5"]];
             NSArray *valueArray = [headersStorage.headers objectForKey:@"Cookies"];
             [[theValue([valueArray count]) should] isEqual:theValue(4)];
         });

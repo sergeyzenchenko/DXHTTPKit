@@ -16,47 +16,37 @@
 
 @implementation DXHTTPHeadersStorage
 
-
-- (void)addHeader:(NSString *)aHeaderKey value:(NSString *)aValue {
-    NSParameterAssert([aHeaderKey isKindOfClass:[NSString class]]);
-    NSParameterAssert([aHeaderKey length] != 0);
-    NSParameterAssert([aValue isKindOfClass:[NSString class]]);
-    
-    if(_headers == nil) {
+- (id)init {
+    self = [super init];
+    if (self) {
         _headers = [[NSMutableDictionary alloc] init];
-        NSArray *arrayForValue = @[aValue];
-        [_headers setObject:arrayForValue forKey:aHeaderKey];
-    } else {
-        NSMutableArray *headerValue = [[_headers objectForKey:aHeaderKey] mutableCopy];
-        
-        if (headerValue) {
-            [headerValue addObject:aValue];
-            [_headers setObject:headerValue forKey:aHeaderKey];
-        } else {
-            NSArray *arrayForValue = @[aValue];
-            [_headers setObject:arrayForValue forKey:aHeaderKey];
-        }
     }
+    return self;
 }
 
-- (void)addHeader:(NSString *)aHeaderKey valuesArray:(NSArray *)aValuesArray {
+- (void)addHeader:(NSString *)aHeaderKey value:(id)aValue {
     
     NSParameterAssert([aHeaderKey isKindOfClass:[NSString class]]);
     NSParameterAssert([aHeaderKey length] != 0);
-    NSParameterAssert([aValuesArray isKindOfClass:[NSArray class]]);
+    NSParameterAssert([[self class] isAllowedClassForHeaderValueField:[aValue class]]);
     
-    if(_headers == nil) {
-        _headers = [[NSMutableDictionary alloc] init];
-        [_headers setObject:aValuesArray forKey:aHeaderKey];
-    } else {
-        NSMutableArray *headerValue = [[_headers objectForKey:aHeaderKey] mutableCopy];
-        
-        if (headerValue) {
-            for(NSInteger i = 0; i < [aValuesArray count]; ++i)
-                [headerValue addObject:aValuesArray[i]];
-            [_headers setObject:headerValue forKey:aHeaderKey];
+    NSMutableArray *headerValue = [[_headers objectForKey:aHeaderKey] mutableCopy];
+    
+    if (headerValue) {
+        if ([aValue isKindOfClass: [NSString class]]) {
+            [headerValue addObject:aValue];
         } else {
-            [_headers setObject:aValuesArray forKey:aHeaderKey];
+            
+            for (NSInteger i = 0; i < [aValue count]; ++i)
+                [headerValue addObject: aValue[i]];
+        }
+        [_headers setObject:headerValue forKey:aHeaderKey];
+    } else {
+        if ([aValue isKindOfClass:[NSString class]]) {
+            NSArray *arrayForValue = @[aValue];
+            [_headers setObject:arrayForValue forKey:aHeaderKey];
+        } else {
+            [_headers setObject:aValue forKey:aHeaderKey];
         }
     }
 }

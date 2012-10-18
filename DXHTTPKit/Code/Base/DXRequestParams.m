@@ -62,10 +62,7 @@ const struct DXHTTPMethod DXHTTPMethod = {
 
 
 - (void)addHeader:(NSString *)aHeaderKey value:(id)aValue {
-    if ([aValue isKindOfClass:[NSArray class]])
-        [self.headersStorage addHeader:aHeaderKey valuesArray:aValue];
-    else
-        [self.headersStorage addHeader:aHeaderKey value:aValue];
+    [self.headersStorage addHeader:aHeaderKey value:aValue];
 }
 
 - (void)setHttpMethod:(NSString *)aHttpMethod {
