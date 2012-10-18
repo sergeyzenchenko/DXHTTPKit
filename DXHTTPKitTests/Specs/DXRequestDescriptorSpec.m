@@ -1,9 +1,9 @@
 #import "Kiwi.h"
 #import "DXHTTPRequestDescriptor.h"
 
-SPEC_BEGIN(DXRequestParamsSpec)
+SPEC_BEGIN(DXRequestDescriptorSpec)
 
-describe(@"RequestParams", ^{
+describe(@"DXRequestDescriptor", ^{
     
     __block DXHTTPRequestDescriptor *requestDescriptor;
     
