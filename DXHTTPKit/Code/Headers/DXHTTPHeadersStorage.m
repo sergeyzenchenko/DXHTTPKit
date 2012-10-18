@@ -42,10 +42,9 @@
         [_headers setObject:headerValue forKey:aHeaderKey];
     } else {
         if ([aValue isKindOfClass:[NSString class]]) {
-            [_headers setObject:@[aValue] forKey:aHeaderKey];
-        } else {
-            [_headers setObject:aValue forKey:aHeaderKey];
+            aValue = @[aValue];
         }
+        [_headers setObject:aValue forKey:aHeaderKey];
     }
 }
 
