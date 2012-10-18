@@ -23,7 +23,7 @@ describe(@"Headers Storage", ^{
             [[theValue([headersStorage.headers count]) should] equal:theValue(2)];
         });
         
-        it(@"Should keep header exists value should append new value", ^{
+        it(@"Should keep header exists value and append new value", ^{
             [headersStorage addHeader:@"Cookies" value:@[@"userpath=/", @"projectsCount=5"]];
             NSArray *valueArray = [headersStorage.headers objectForKey:@"Cookies"];
             [[theValue([valueArray count]) should] isEqual:theValue(4)];

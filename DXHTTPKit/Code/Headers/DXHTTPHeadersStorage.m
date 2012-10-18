@@ -36,15 +36,13 @@
         if ([aValue isKindOfClass: [NSString class]]) {
             [headerValue addObject:aValue];
         } else {
-            
             for (NSInteger i = 0; i < [aValue count]; ++i)
                 [headerValue addObject: aValue[i]];
         }
         [_headers setObject:headerValue forKey:aHeaderKey];
     } else {
         if ([aValue isKindOfClass:[NSString class]]) {
-            NSArray *arrayForValue = @[aValue];
-            [_headers setObject:arrayForValue forKey:aHeaderKey];
+            [_headers setObject:@[aValue] forKey:aHeaderKey];
         } else {
             [_headers setObject:aValue forKey:aHeaderKey];
         }
