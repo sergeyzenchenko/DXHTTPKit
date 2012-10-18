@@ -10,7 +10,11 @@
 
 @interface DXHTTPParamKey : NSObject
 
-+ (NSArray *)allowedClassesForValueField;
++ (NSArray *)allowedClassesForParamValueField;
 
-+ (BOOL)isAllowedClassForValueField:(Class)valueFieldClass;
++ (BOOL)isAllowedClassForParamValueField:(Class)valueFieldClass;
+
++ (NSArray *)allowedClassesForHeaderValueField;
+
++ (BOOL)isAllowedClassForHeaderValueField:(Class)valueFieldClass;
 @end

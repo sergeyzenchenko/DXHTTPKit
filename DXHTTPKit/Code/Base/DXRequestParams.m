@@ -61,18 +61,25 @@ const struct DXHTTPMethod DXHTTPMethod = {
 }
 
 
-- (void)addHeader:(NSString *)aHeaderKey value:(NSArray *)aValue {
-    [self.headersStorage addHeader:aHeaderKey value:aValue];
+- (void)addHeader:(NSString *)aHeaderKey value:(id)aValue {
+    if ([aValue isKindOfClass:[NSArray class]])
+        [self.headersStorage addHeader:aHeaderKey valuesArray:aValue];
+    else
+        [self.headersStorage addHeader:aHeaderKey value:aValue];
 }
 
 - (void)setHttpMethod:(NSString *)aHttpMethod {
     
     DXParametrAssert(DXHTTPMethodIsValid(aHttpMethod), DXHTTPErrors.HTTPInvalidMethod);
-
-        _httpMethod = aHttpMethod;
+    
+    _httpMethod = aHttpMethod;
 }
 
 - (NSArray*) params {
     return [_params copy];
+}
+
+- (NSDictionary *) headers {
+    return [_headersStorage.headers copy];
 }
 @end

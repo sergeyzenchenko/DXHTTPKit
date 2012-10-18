@@ -21,7 +21,7 @@
     
     NSParameterAssert(aKey != nil);
     NSParameterAssert([aKey isKindOfClass:[NSString class]]);
-    NSParameterAssert([DXHTTPFormParam isAllowedClassForValueField:[aValue class]]);
+    NSParameterAssert([DXHTTPFormParam isAllowedClassForParamValueField:[aValue class]]);
     
     self = [super init];
     if(self) {

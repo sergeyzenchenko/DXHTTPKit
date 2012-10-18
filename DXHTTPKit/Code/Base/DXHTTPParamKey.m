@@ -11,7 +11,7 @@
 
 @implementation DXHTTPParamKey
 
-+ (NSArray *)allowedClassesForValueField {
++ (NSArray *)allowedClassesForParamValueField {
     static NSArray *allowedClasses = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -20,8 +20,27 @@
     return allowedClasses;
 }
 
-+ (BOOL)isAllowedClassForValueField:(Class)valueFieldClass {
-    NSArray *allowedClasses = [self allowedClassesForValueField];
++ (BOOL)isAllowedClassForParamValueField:(Class)valueFieldClass {
+    NSArray *allowedClasses = [self allowedClassesForParamValueField];
+    for(int i = 0; i < [allowedClasses count]; ++i) {
+        if([[valueFieldClass class] isSubclassOfClass:[allowedClasses[i] class]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++ (NSArray *)allowedClassesForHeaderValueField {
+    static NSArray *allowedClasses = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        allowedClasses = @[[NSString class], [NSArray class]];
+    });
+    return allowedClasses;
+}
+
++ (BOOL)isAllowedClassForHeaderValueField:(Class)valueFieldClass {
+    NSArray *allowedClasses = [self allowedClassesForHeaderValueField];
     for(int i = 0; i < [allowedClasses count]; ++i) {
         if([[valueFieldClass class] isSubclassOfClass:[allowedClasses[i] class]]) {
             return YES;

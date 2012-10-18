@@ -23,11 +23,12 @@ extern const struct DXHTTPMethod
 
 @interface DXRequestParams : DXHTTPParamKey
 
+@property (nonatomic, strong) NSDictionary *headers;
 @property (nonatomic, strong, readonly) NSArray *params;
 @property (nonatomic, copy) NSString *httpMethod;
 @property (nonatomic, copy) NSString *path;
 
 - (void)addParam:(NSString *)key value:(id)value;
 
-- (void)addHeader:(NSString *)aHeaderKey value:(NSArray *)aValue;
+- (void)addHeader:(NSString *)aHeaderKey value:(id)aValue;
 @end

@@ -164,8 +164,8 @@
 				EAB5F44C162D873E00A7E403 /* DXRequestParams.h */,
 				EAB5F44D162D873E00A7E403 /* DXRequestParams.m */,
 				EAB5F440162D86C700A7E403 /* DXHTTPParamKey.h */,
-				EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */,
 				EAB5F441162D86C700A7E403 /* DXHTTPParamKey.m */,
+				EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */,
 			);
 			path = Base;
 			sourceTree = "<group>";

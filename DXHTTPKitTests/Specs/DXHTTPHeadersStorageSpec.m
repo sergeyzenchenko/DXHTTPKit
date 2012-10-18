@@ -14,17 +14,17 @@ describe(@"Headers Storage", ^{
         });
         
         it(@"Should keep header key and value", ^{
-            [headersStorage addHeader:@"Host" value:@[@"localhost"]];
+            [headersStorage addHeader:@"Host" value:@"localhost"];
             [[theValue([headersStorage.headers count]) should] equal:theValue(1)];
         });
         
         it(@"Should keep header multipile key and value", ^{
-            [headersStorage addHeader:@"Cookies" value:@[@"login=111minutes", @"passwd=111min"]];
+            [headersStorage addHeader:@"Cookies" valuesArray:@[@"login=111minutes", @"passwd=111min"]];
             [[theValue([headersStorage.headers count]) should] equal:theValue(2)];
         });
         
         it(@"Should keep header exists value should append new value", ^{
-            [headersStorage addHeader:@"Cookies" value:@[@"userpath=/", @"projectsCount=5"]];
+            [headersStorage addHeader:@"Cookies" valuesArray:@[@"userpath=/", @"projectsCount=5"]];
             NSArray *valueArray = [headersStorage.headers objectForKey:@"Cookies"];
             [[theValue([valueArray count]) should] isEqual:theValue(4)];
         });
@@ -38,7 +38,7 @@ describe(@"Headers Storage", ^{
         
         it(@"Should throw exception in case of non string key type", ^{
             [[theBlock(^{
-                [headersStorage addHeader:[NSData dataWithBytes:"123" length:3] value:@[@"header value"]];
+                [headersStorage addHeader:[NSData dataWithBytes:"123" length:3] value:@"header value"];
             }) should] raiseWithName:NSInternalInconsistencyException];
         });
         
@@ -50,13 +50,13 @@ describe(@"Headers Storage", ^{
         
         it(@"Should throw exception in case of nil key type", ^{
             [[theBlock(^{
-                [headersStorage addHeader:nil value:@[@"value1"]];
+                [headersStorage addHeader:nil value:@"value1"];
             }) should] raiseWithName:NSInternalInconsistencyException];
         });
         
         it(@"Should throw exception in case of empty string key type", ^{
             [[theBlock(^{
-                [headersStorage addHeader:@"" value:@[@"value1"]];
+                [headersStorage addHeader:@"" value:@"value1"];
             }) should] raiseWithName:NSInternalInconsistencyException];
         });
         

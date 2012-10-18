@@ -10,7 +10,9 @@
 
 @interface DXHTTPHeadersStorage : DXHTTPParamKey
 
-@property (nonatomic, strong, readonly) NSMutableDictionary *headers;
+@property (nonatomic, strong, readonly) NSDictionary *headers;
 
-- (void)addHeader:(NSString *)aHeaderKey value:(NSArray *)aValue;
+- (void)addHeader:(NSString *)aHeaderKey valuesArray:(NSArray *)aValuesArray;
+
+- (void)addHeader:(NSString *)aHeaderKey value:(NSString *)aValue;
 @end

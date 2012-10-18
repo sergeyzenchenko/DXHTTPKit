@@ -8,32 +8,60 @@
 
 #import "DXHTTPHeadersStorage.h"
 
-@interface DXHTTPHeadersStorage()
-
-@property (nonatomic, strong, readwrite) NSMutableDictionary *headers;
+@interface DXHTTPHeadersStorage() {
+    NSMutableDictionary *_headers;
+}
 
 @end
 
 @implementation DXHTTPHeadersStorage
 
-- (void)addHeader:(NSString *)aHeaderKey value:(NSArray *)aValue {
-    
+
+- (void)addHeader:(NSString *)aHeaderKey value:(NSString *)aValue {
     NSParameterAssert([aHeaderKey isKindOfClass:[NSString class]]);
     NSParameterAssert([aHeaderKey length] != 0);
-    NSParameterAssert([aValue isKindOfClass:[NSArray class]]);
+    NSParameterAssert([aValue isKindOfClass:[NSString class]]);
     
-    if(self.headers == nil) {
-        self.headers = [[NSMutableDictionary alloc] init];
-        [self.headers setObject:aValue forKey:aHeaderKey];
+    if(_headers == nil) {
+        _headers = [[NSMutableDictionary alloc] init];
+        NSArray *arrayForValue = @[aValue];
+        [_headers setObject:arrayForValue forKey:aHeaderKey];
     } else {
         NSMutableArray *headerValue = [[_headers objectForKey:aHeaderKey] mutableCopy];
         
         if (headerValue) {
             [headerValue addObject:aValue];
-            [self.headers setObject:headerValue forKey:aHeaderKey];
+            [_headers setObject:headerValue forKey:aHeaderKey];
         } else {
-            [self.headers setObject:aValue forKey:aHeaderKey];
+            NSArray *arrayForValue = @[aValue];
+            [_headers setObject:arrayForValue forKey:aHeaderKey];
         }
     }
+}
+
+- (void)addHeader:(NSString *)aHeaderKey valuesArray:(NSArray *)aValuesArray {
+    
+    NSParameterAssert([aHeaderKey isKindOfClass:[NSString class]]);
+    NSParameterAssert([aHeaderKey length] != 0);
+    NSParameterAssert([aValuesArray isKindOfClass:[NSArray class]]);
+    
+    if(_headers == nil) {
+        _headers = [[NSMutableDictionary alloc] init];
+        [_headers setObject:aValuesArray forKey:aHeaderKey];
+    } else {
+        NSMutableArray *headerValue = [[_headers objectForKey:aHeaderKey] mutableCopy];
+        
+        if (headerValue) {
+            for(NSInteger i = 0; i < [aValuesArray count]; ++i)
+                [headerValue addObject:aValuesArray];
+            [_headers setObject:headerValue forKey:aHeaderKey];
+        } else {
+            [_headers setObject:aValuesArray forKey:aHeaderKey];
+        }
+    }
+}
+
+- (NSDictionary *) headers {
+    return _headers;
 }
 @end
