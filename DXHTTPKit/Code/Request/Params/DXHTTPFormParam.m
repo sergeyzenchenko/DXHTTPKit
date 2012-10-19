@@ -1,5 +1,5 @@
 //
-//  DXParam.m
+//  DXHTTPFormParam.m
 //  DXHTTPKit
 //
 //  Created by TheSooth on 10/14/12.
@@ -29,5 +29,12 @@
         self.value = aValue;
     }
     return self;
+}
+
+- (NSString *)description {
+    if ([self.value isKindOfClass:[NSString class]])
+        return [NSString stringWithFormat:@"%@=%@", self.key, self.value];
+    else
+        return @"";
 }
 @end

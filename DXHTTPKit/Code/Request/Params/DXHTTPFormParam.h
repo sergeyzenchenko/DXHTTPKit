@@ -15,5 +15,6 @@
 @property (nonatomic, copy, readonly) id value;
 
 - (id)initWithKey:(NSString *)aKey value:(id)aValue;
+- (NSString *)description;
 
 @end
