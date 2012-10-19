@@ -15,12 +15,8 @@
     NSArray *headersKeys = [headers allKeys];
     
     for (NSInteger i = 0; i < [headersKeys count]; ++i) {
-        NSMutableString *headerValue = [NSMutableString new];
         NSArray *headerValues = [headers objectForKey: headersKeys[i]];
-        NSInteger j = 0;
-        for (j = 0; j < [headerValues count] - 1; ++j)
-                [headerValue appendFormat:@"%@; ", headerValues[j]];
-        [headerValue appendString:headerValues[j]];
+        NSString *headerValue = [headerValues componentsJoinedByString:@"; "];
         
         [urlRequest setValue:headerValue forHTTPHeaderField:headersKeys[i]];
     }
