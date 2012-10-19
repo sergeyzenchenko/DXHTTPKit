@@ -10,6 +10,7 @@
 #import "DXHTTPFormParam.h"
 #import "DXHTTPHeadersStorage.h"
 #import "DXHTTPFormFileDescriptor.h"
+#import "DXHTTPErrors.h"
 
 extern const struct DXHTTPMethod
 {

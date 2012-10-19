@@ -32,8 +32,9 @@
 }
 
 - (NSString *)description {
-    if ([self.value isKindOfClass:[NSString class]])
+    if ([self.value isKindOfClass:[NSString class]]) {
         return [NSString stringWithFormat:@"%@=%@", self.key, self.value];
+    }
     return nil;
 }
 @end

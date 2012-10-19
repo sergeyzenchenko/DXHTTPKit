@@ -11,16 +11,18 @@
 @implementation DXHTTPFormParamsBuilder
 
 - (NSURLRequest *)buildParams:(DXHTTPRequestDescriptor *)requestDescriptor {
+    DXParametrAssert([requestDescriptor.httpMethod length], DXHTTPErrors.HTTPMethodIsEmpty);
+    
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
     NSMutableArray *fileArray = [NSMutableArray new];;
     NSMutableArray *paramsArray = [NSMutableArray new];;
     
-    NSMutableString *paramsString = [[NSMutableString alloc] initWithString:@"?"];
+    NSMutableString *paramsString = [NSMutableString new];
     
     for (DXHTTPFormParam *formParam in requestDescriptor.params)
         if ([formParam.value isKindOfClass:[NSString class]])
             [paramsArray addObject:formParam];
-        else
+        else if ([formParam.value isKindOfClass:[DXHTTPFormFileDescriptor class]])
             [fileArray addObject:formParam];
     
     [paramsString appendFormat:@"%@", [paramsArray componentsJoinedByString:@"&"]];
@@ -29,7 +31,8 @@
     
     if ([[urlRequest HTTPMethod] isEqualToString:@"POST"]) {
         [urlRequest setHTTPBody:[paramsString dataUsingEncoding:NSUTF8StringEncoding]];
-    } else
+    } else if ([[urlRequest HTTPMethod]isEqualToString:@"GET"])
+        [paramsString insertString:@"?" atIndex:0];
         [urlRequest setURL:[NSURL URLWithString:paramsString]];
     
     return urlRequest;

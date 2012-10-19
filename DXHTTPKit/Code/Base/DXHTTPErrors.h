@@ -6,11 +6,13 @@
 //  Copyright (c) 2012 111Minutes. All rights reserved.
 //
 
-extern const struct DXHTTPErrors
+static const struct DXHTTPErrors
 {
     __unsafe_unretained NSString *HTTPInvalidMethod;
+    __unsafe_unretained NSString *HTTPMethodIsEmpty;
 } DXHTTPErrors;
 
-const struct DXHTTPErrors DXHTTPErrors = {
+static const struct DXHTTPErrors DXHTTPErrors = {
     .HTTPInvalidMethod = @"Invalid HTTP Method",
+    .HTTPMethodIsEmpty = @"HTTP Method is Empty",
 };
