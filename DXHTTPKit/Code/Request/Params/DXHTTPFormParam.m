@@ -34,7 +34,6 @@
 - (NSString *)description {
     if ([self.value isKindOfClass:[NSString class]])
         return [NSString stringWithFormat:@"%@=%@", self.key, self.value];
-    else
-        return @"";
+    return @"";
 }
 @end

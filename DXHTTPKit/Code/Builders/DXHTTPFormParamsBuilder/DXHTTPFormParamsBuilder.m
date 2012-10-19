@@ -12,11 +12,18 @@
 
 - (NSURLRequest *)buildParams:(DXHTTPRequestDescriptor *)requestDescriptor {
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
+    NSMutableArray *fileArray = [NSMutableArray new];;
+    NSMutableArray *paramsArray = [NSMutableArray new];;
     
     NSMutableString *paramsString = [[NSMutableString alloc] initWithString:@"?"];
     
-    [paramsString appendFormat:@"%@", [requestDescriptor.params componentsJoinedByString:@"&"]];
-    paramsString = [[paramsString stringByReplacingOccurrencesOfString:@"&&" withString:@"&"] mutableCopy];
+    for (DXHTTPFormParam *formParam in requestDescriptor.params)
+        if ([formParam.value isKindOfClass:[NSString class]])
+            [paramsArray addObject:formParam];
+        else
+            [fileArray addObject:formParam];
+    
+    [paramsString appendFormat:@"%@", [paramsArray componentsJoinedByString:@"&"]];
     
     [urlRequest setHTTPMethod:requestDescriptor.httpMethod];
     
