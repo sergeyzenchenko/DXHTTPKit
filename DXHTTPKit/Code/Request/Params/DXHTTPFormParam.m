@@ -1,31 +1,33 @@
 //
-//  DXHTTPFormParam.m
+//  DXParam.m
 //  DXHTTPKit
 //
-//  Created by Sergey Zenchenko on 10/15/12.
-//  Copyright (c) 2012 111Minutes. All rights reserved.
+//  Created by TheSooth on 10/14/12.
+//  Copyright (c) 2012 TheSooth. All rights reserved.
 //
 
 #import "DXHTTPFormParam.h"
-#import "DXHTTPFormBinaryDataValue.h"
 
 @interface DXHTTPFormParam ()
 
-@property (nonatomic, strong, readwrite) id value;
+@property (nonatomic, copy, readwrite) NSString *key;
+@property (nonatomic, copy, readwrite) id value;
 
 @end
 
 @implementation DXHTTPFormParam
 
-- (id)initWithKey:(NSString *)aKey value:(id)aValue
-{
-    NSParameterAssert(aValue == nil || [aValue isKindOfClass:[NSString class]] || [aValue conformsToProtocol:@protocol(DXHTTPFormBinaryDataValue)]);
+- (id)initWithKey:(NSString *)aKey value:(id)aValue {
     
-    self = [super initWithKey:aKey];
-    if (self) {
+    NSParameterAssert(aKey != nil);
+    NSParameterAssert([aKey isKindOfClass:[NSString class]]);
+    NSParameterAssert([[self class] isAllowedClassForParamValueField:[aValue class]]);
+    
+    self = [super init];
+    if(self) {
+        self.key = aKey;
         self.value = aValue;
     }
     return self;
 }
-
 @end

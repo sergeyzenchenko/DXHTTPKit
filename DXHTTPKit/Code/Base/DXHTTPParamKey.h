@@ -1,17 +1,20 @@
 //
-//  DXHTTPParam.h
+//  DXParam.h
 //  DXHTTPKit
 //
-//  Created by Sergey Zenchenko on 10/15/12.
-//  Copyright (c) 2012 111Minutes. All rights reserved.
+//  Created by TheSooth on 10/14/12.
+//  Copyright (c) 2012 TheSooth. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface DXHTTPParamKey : NSObject
 
-@property (nonatomic, copy, readonly) NSString *key;
++ (NSArray *)allowedClassesForParamValueField;
 
-- (id)initWithKey:(NSString*)aKey;
++ (BOOL)isAllowedClassForParamValueField:(Class)valueFieldClass;
 
++ (NSArray *)allowedClassesForHeaderValueField;
+
++ (BOOL)isAllowedClassForHeaderValueField:(Class)valueFieldClass;
 @end
