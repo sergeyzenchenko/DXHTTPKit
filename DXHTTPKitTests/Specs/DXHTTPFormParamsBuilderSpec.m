@@ -47,8 +47,6 @@ describe(@"DXHTTPFormParamsBuilder", ^{
         [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/zzz.log"]];
         [requestDescriptor addParam:@"passwd" value:@"111"];
         
-        NSLog(@"%@", [requestDescriptor.params description]);
-        
         urlRequest = [paramsBuilder buildParams:requestDescriptor];
         
         [[[[urlRequest URL] absoluteString] should] equal:@"?login=111minutes&passwd=111"];
