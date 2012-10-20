@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DXHTTPRequestDescriptor.h"
 
 @interface DXHTTPFormFileBuilder : NSObject
+
+- (NSInputStream *)buildFileStream:(DXHTTPFormFileDescriptor *)fileDescriptor;
 
 @end

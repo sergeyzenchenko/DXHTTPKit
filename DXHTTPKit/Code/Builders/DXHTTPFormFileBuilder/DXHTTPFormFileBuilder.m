@@ -10,4 +10,9 @@
 
 @implementation DXHTTPFormFileBuilder
 
+- (NSInputStream *)buildFileStream:(DXHTTPFormFileDescriptor *)fileDescriptor {
+    NSInputStream *inputStream = [[NSInputStream alloc] initWithFileAtPath:[fileDescriptor filePath]];
+    return inputStream;
+}
+
 @end

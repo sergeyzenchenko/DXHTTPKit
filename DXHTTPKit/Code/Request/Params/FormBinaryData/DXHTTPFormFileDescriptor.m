@@ -17,6 +17,8 @@
 @implementation DXHTTPFormFileDescriptor
 
 - (id)initWithFilePath:(NSString *)aFilePath {
+    DXParametrAssert([[NSFileManager defaultManager] fileExistsAtPath:aFilePath], @"no file");
+    
     self = [super init];
     if(self) {
         self.filePath = aFilePath;

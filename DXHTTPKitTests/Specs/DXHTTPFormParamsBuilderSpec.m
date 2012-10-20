@@ -46,7 +46,7 @@ describe(@"DXHTTPFormParamsBuilder", ^{
         });
         it(@"Should return urlRequest, url must be without FileDescriptor", ^{
             [requestDescriptor addParam:@"login" value:@"111minutes"];
-            [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/zzz.log"]];
+            [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/kernel.log"]];
             [requestDescriptor addParam:@"passwd" value:@"111"];
             [requestDescriptor setHttpMethod:@"GET"];
             

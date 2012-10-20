@@ -7,6 +7,7 @@
 //
 
 #import "DXHTTPFormParamsBuilder.h"
+#import "DXHTTPFormFileBuilder.h"
 
 @implementation DXHTTPFormParamsBuilder
 
@@ -30,6 +31,14 @@
     [urlRequest setHTTPMethod:requestDescriptor.httpMethod];
     
     if ([[urlRequest HTTPMethod] isEqualToString:@"POST"]) {
+        NSMutableArray *filesStreams = [NSMutableArray new];
+        
+        for (DXHTTPFormParam *fileParam in fileArray) {
+            DXHTTPFormFileBuilder *fileBuilder = [DXHTTPFormFileBuilder new];
+            NSInputStream * fileStream = [fileBuilder buildFileStream:fileParam.value];
+            
+            [filesStreams addObject:fileStream];
+        }
         [urlRequest setHTTPBody:[paramsString dataUsingEncoding:NSUTF8StringEncoding]];
     } else if ([[urlRequest HTTPMethod]isEqualToString:@"GET"])
         [paramsString insertString:@"?" atIndex:0];
