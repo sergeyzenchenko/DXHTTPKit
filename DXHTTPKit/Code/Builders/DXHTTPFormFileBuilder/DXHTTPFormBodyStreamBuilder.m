@@ -20,15 +20,13 @@
 
 @implementation DXHTTPFormBodyStreamBuilder
 
-- (id)initWithFilesArrayAndParamsArray:(NSArray *)aFilesArray paramsArray:(NSArray *)aParamsArray {
-    DXParametrAssert([aFilesArray count], @"Empty files Array");
-    
+- (id)initWithFiles:(NSArray *)aFilesArray andParamsArray:(NSArray *)aParamsArray {
     self = [super init];
     if (self) {
         _filesArray  = aFilesArray;
         _paramsArray = aParamsArray;
         _parts = [NSMutableArray new];
-        _boundary = @"DXHTTPKit-abcdefg123";
+        _boundary = [NSString stringWithFormat:@"DXHTTPKit-%@", [[NSProcessInfo processInfo] hostName]];
         _footer = [[NSString stringWithFormat:@"--%@--\r\n", _boundary] dataUsingEncoding:NSUTF8StringEncoding];
         _footerLength = [_footer length];
         [self updateLength];
@@ -38,13 +36,13 @@
 
 - (void)buildStream {
     for (DXHTTPFormParam *fileElement in _filesArray) {
-        [_parts addObject:[[DXHTTPFormFileElement alloc] initWithFormFileParamAndBoundary:fileElement boundary:_boundary]];
+        [_parts addObject:[[DXHTTPFormFileElement alloc] initWithFormFileParam:fileElement boundary:_boundary]];
         
         [self updateLength];
     }
     
     for (DXHTTPFormParam *paramElement in _paramsArray) {
-        [_parts addObject:[[DXHTTPFormFileElement alloc] initWithFormParamAndBoundary:paramElement boundary:_boundary]];
+        [_parts addObject:[[DXHTTPFormFileElement alloc] initWithFormParam:paramElement boundary:_boundary]];
         
         [self updateLength];
     }

@@ -50,7 +50,7 @@ describe(@"DXHTTPFormParamsBuilder", ^{
             [requestDescriptor addParam:@"login" value:@"111minutes"];
             [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/system.log"]];
             [requestDescriptor addParam:@"passwd" value:@"111"];
-            [requestDescriptor setHttpMethod:@"GET"];
+            [requestDescriptor setHttpMethod:DXHTTPMethod.GET];
             
             urlRequest = [paramsBuilder buildParams:requestDescriptor urlRequest:urlRequest];
             

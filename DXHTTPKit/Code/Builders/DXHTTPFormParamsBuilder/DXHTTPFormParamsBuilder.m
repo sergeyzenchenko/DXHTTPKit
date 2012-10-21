@@ -25,10 +25,8 @@
         else if ([formParam.value isKindOfClass:[DXHTTPFormFileDescriptor class]])
             [filesArray addObject:formParam];
     
-    //[urlRequest setHTTPMethod:requestDescriptor.httpMethod];
-    
     if ([[urlRequest HTTPMethod] isEqualToString:@"POST"]) {
-        DXHTTPFormBodyStreamBuilder *bodyStream = [[DXHTTPFormBodyStreamBuilder alloc] initWithFilesArrayAndParamsArray:filesArray paramsArray:paramsArray];
+        DXHTTPFormBodyStreamBuilder *bodyStream = [[DXHTTPFormBodyStreamBuilder alloc] initWithFiles:filesArray andParamsArray:paramsArray];
         [bodyStream buildStream];
         [urlRequest setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", [bodyStream boundary]] forHTTPHeaderField:@"Content-Type"];
         [urlRequest setValue:[NSString stringWithFormat:@"%d", [bodyStream length]] forHTTPHeaderField:@"Content-Length"];

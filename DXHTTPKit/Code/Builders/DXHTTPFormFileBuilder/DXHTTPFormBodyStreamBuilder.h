@@ -12,7 +12,7 @@
 
 @interface DXHTTPFormBodyStreamBuilder : NSInputStream
 
-- (id)initWithFilesArrayAndParamsArray:(NSArray *)aFilesArray paramsArray:(NSArray *)aParamsArray;
+- (id)initWithFiles:(NSArray *)aFilesArray andParamsArray:(NSArray *)aParamsArray;
 
 - (void)buildStream;
 

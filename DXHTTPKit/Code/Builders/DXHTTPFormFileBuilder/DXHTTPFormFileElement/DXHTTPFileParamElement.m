@@ -17,7 +17,7 @@
 
 @implementation DXHTTPFormFileElement
 
-- (id)initWithFormFileParamAndBoundary:(DXHTTPFormParam *)fileParam boundary:(NSString *)boundary {
+- (id)initWithFormFileParam:(DXHTTPFormParam *)fileParam  boundary:(NSString *)boundary {
     self = [super init];
     if (self) {
         NSString *filePath = [fileParam.value filePath];
@@ -36,7 +36,7 @@
     return self;
 }
 
-- (id)initWithFormParamAndBoundary:(DXHTTPFormParam *)formParam boundary:(NSString *)boundary {
+- (id)initWithFormParam:(DXHTTPFormParam *)formParam boundary:(NSString *)boundary {
     self = [super init];
     if (self) {
         _partHeader = [[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"%@\"\r\n\r\n", boundary, formParam.key] dataUsingEncoding:NSUTF8StringEncoding];

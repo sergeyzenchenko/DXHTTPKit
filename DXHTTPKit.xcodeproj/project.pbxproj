@@ -24,7 +24,7 @@
 		EA76B4F11630A7D2004B85CA /* DXHTTPRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4F01630A7D2004B85CA /* DXHTTPRequestBuilder.m */; };
 		EA76B4F51630A81E004B85CA /* DXHTTPHeadersBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4F41630A81E004B85CA /* DXHTTPHeadersBuilder.m */; };
 		EA76B4F81630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EA76B4F71630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m */; };
-		EAB5F43C162D869900A7E403 /* DXRequestDescriptorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F438162D869900A7E403 /* DXRequestDescriptorSpec.m */; };
+		EAB5F43C162D869900A7E403 /* DXHTTPRequestDescriptorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F438162D869900A7E403 /* DXHTTPRequestDescriptorSpec.m */; };
 		EAB5F43D162D869900A7E403 /* DXHTTPFormParamSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */; };
 		EAB5F43E162D869900A7E403 /* DXHTTPHeadersStorageSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F43A162D869900A7E403 /* DXHTTPHeadersStorageSpec.m */; };
 		EAB5F43F162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB5F43B162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m */; };
@@ -87,7 +87,7 @@
 		EA76B4F41630A81E004B85CA /* DXHTTPHeadersBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DXHTTPHeadersBuilder.m; path = Builders/DXHTTPHeadersBuilder/DXHTTPHeadersBuilder.m; sourceTree = "<group>"; };
 		EA76B4F71630A9ED004B85CA /* DXHTTPHeadersBuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPHeadersBuilderSpec.m; sourceTree = "<group>"; };
 		EAB5DD17163017A1006AEB97 /* DXHTTPErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPErrors.h; sourceTree = "<group>"; };
-		EAB5F438162D869900A7E403 /* DXRequestDescriptorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXRequestDescriptorSpec.m; sourceTree = "<group>"; };
+		EAB5F438162D869900A7E403 /* DXHTTPRequestDescriptorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPRequestDescriptorSpec.m; sourceTree = "<group>"; };
 		EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPFormParamSpec.m; sourceTree = "<group>"; };
 		EAB5F43A162D869900A7E403 /* DXHTTPHeadersStorageSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPHeadersStorageSpec.m; sourceTree = "<group>"; };
 		EAB5F43B162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXHTTPFormFileDescriptorSpec.m; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D0547A1632ADA60044A2F9 /* DXHTTPFileStreamBuilderSpec.m */,
-				EAB5F438162D869900A7E403 /* DXRequestDescriptorSpec.m */,
+				EAB5F438162D869900A7E403 /* DXHTTPRequestDescriptorSpec.m */,
 				EAB5F439162D869900A7E403 /* DXHTTPFormParamSpec.m */,
 				EAB5F43A162D869900A7E403 /* DXHTTPHeadersStorageSpec.m */,
 				EAB5F43B162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m */,
@@ -472,7 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAB5F43C162D869900A7E403 /* DXRequestDescriptorSpec.m in Sources */,
+				EAB5F43C162D869900A7E403 /* DXHTTPRequestDescriptorSpec.m in Sources */,
 				EAB5F43D162D869900A7E403 /* DXHTTPFormParamSpec.m in Sources */,
 				EAB5F43E162D869900A7E403 /* DXHTTPHeadersStorageSpec.m in Sources */,
 				EAB5F43F162D869900A7E403 /* DXHTTPFormFileDescriptorSpec.m in Sources */,

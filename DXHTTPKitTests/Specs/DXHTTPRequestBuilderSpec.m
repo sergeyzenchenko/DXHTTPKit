@@ -5,27 +5,34 @@
 SPEC_BEGIN(DXHTTPRequestBuilderSpec);
 
 describe(@"DXHTTPRequestBuilder", ^{
-    it(@"Should connect with local webServer and upload file!", ^{
+    it(@"Should return HTTPBodyStream with param", ^{
+        NSString *boundary = [NSString stringWithFormat:@"DXHTTPKit-%@", [[NSProcessInfo processInfo] hostName]];
         DXHTTPRequestBuilder *requestBuilder = [DXHTTPRequestBuilder new];
         DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
         
-        [requestDescriptor addParam:@"userfile" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/etc/hosts"]];
         [requestDescriptor addParam:@"someParam" value:@"someValue"];
-        
-        [requestDescriptor addHeader:@"Cookies" value:@[@"login=111minutes", @"passwd=111min"]];
-        
         [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
         
-        [requestDescriptor setBaseURL:@"http://localhost"];
-        [requestDescriptor setPath:@"/~thesooth/upload.php"];
-        [requestDescriptor setTimeOutInterval:10];
+        NSData *testData = [[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"someParam\"\r\n\r\nsomeValue\r\n--%@--\r\n", boundary, boundary] dataUsingEncoding:NSUTF8StringEncoding];
         
         NSURLRequest *urlRequest = [requestBuilder buildRequest:requestDescriptor];
+        NSInputStream *bodyStream = [urlRequest HTTPBodyStream];
+        [bodyStream open];
         
-        NSURLConnection *connection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
-        [connection start];
+        NSMutableData *streamData = [[NSMutableData alloc] init];
+        NSUInteger bytesRead = 0 ;
+        
+        uint8_t buf[1024];
+        unsigned int len = 0;
+        len = [(NSInputStream *)bodyStream read:buf maxLength:1024];
+        if(len) {
+            [streamData appendBytes:(const void *)buf length:len];
+            bytesRead += len;
+        }
+        [[streamData should] equal:testData];
+       
     });
-    it(@"Should connect with local webServer and transmit value of param", ^{
+    it(@"Should return NSURL with params in URL", ^{
         DXHTTPRequestBuilder *requestBuilder = [DXHTTPRequestBuilder new];
         DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
         
@@ -47,9 +54,6 @@ describe(@"DXHTTPRequestBuilder", ^{
         urlRequest = [requestBuilder buildRequest:requestDescriptor];
         
         [[[[urlRequest URL] absoluteString] should] equal:@"http://localhost/~thesooth/upload.php?someParam=someValue"];
-        
-        NSURLConnection *connection = [NSURLConnection connectionWithRequest:urlRequest delegate:self];
-        [connection start];
     });
 });
 

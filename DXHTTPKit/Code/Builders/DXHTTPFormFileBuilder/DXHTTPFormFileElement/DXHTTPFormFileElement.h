@@ -17,8 +17,8 @@
 
 @interface DXHTTPFormFileElement : NSObject
 
-- (id)initWithFormFileParamAndBoundary:(DXHTTPFormParam *)fileParam  boundary:(NSString *)boundary;
-- (id)initWithFormParamAndBoundary:(DXHTTPFormParam *)formParam  boundary:(NSString *)boundary;
+- (id)initWithFormFileParam:(DXHTTPFormParam *)fileParam  boundary:(NSString *)boundary;
+- (id)initWithFormParam:(DXHTTPFormParam *)formParam  boundary:(NSString *)boundary;
 
 @property (nonatomic, readonly) NSUInteger partLenght;
 
