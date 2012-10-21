@@ -1,15 +1,21 @@
 #import "Kiwi.h"
-#import "DXHTTPFormFileBuilder.h"
+#import "DXHTTPRequestBuilder.h"
+#import "DXHTTPFormParamsBuilder.h"
 
 SPEC_BEGIN(DXHTTPFormFileBuilderSpec)
 
 describe(@"DXHTTPFormFileBuilder", ^{
    
     it(@"Should a return input stream", ^{
-        DXHTTPFormFileBuilder *fileBuilder = [DXHTTPFormFileBuilder new];
-        DXHTTPFormFileDescriptor *fd = [DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/kernel.log"];
-        NSInputStream *fileStream = [fileBuilder buildFileStream:fd];
-        [[fileStream should] beNonNil];
+        DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
+        [requestDescriptor addParam:@"userfile" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/etc/hosts"]];
+        [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
+        NSURLRequest *urlRequest = [NSURLRequest new];
+        urlRequest = [[DXHTTPURLRequestAdditionalsBuilder alloc] buildAdditionals:requestDescriptor];
+        urlRequest = [[DXHTTPFormParamsBuilder alloc] buildParams:requestDescriptor urlRequest:urlRequest];
+        
+        [[[urlRequest HTTPBodyStream] should] beNonNil];
+        
     });
 });
 

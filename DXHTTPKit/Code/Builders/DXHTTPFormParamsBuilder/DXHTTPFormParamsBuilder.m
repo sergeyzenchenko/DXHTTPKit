@@ -7,15 +7,14 @@
 //
 
 #import "DXHTTPFormParamsBuilder.h"
-#import "DXHTTPFormFileBuilder.h"
 
 @implementation DXHTTPFormParamsBuilder
 
-- (NSURLRequest *)buildParams:(DXHTTPRequestDescriptor *)requestDescriptor {
+- (NSURLRequest *)buildParams:(DXHTTPRequestDescriptor *)requestDescriptor urlRequest:(NSURLRequest *)aURLRequest {
     DXParametrAssert([requestDescriptor.httpMethod length], DXHTTPErrors.HTTPMethodIsEmpty);
     
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
-    NSMutableArray *fileArray = [NSMutableArray new];;
+    NSMutableURLRequest *urlRequest = [aURLRequest mutableCopy];
+    NSMutableArray *filesArray = [NSMutableArray new];;
     NSMutableArray *paramsArray = [NSMutableArray new];;
     
     NSMutableString *paramsString = [NSMutableString new];
@@ -24,26 +23,23 @@
         if ([formParam.value isKindOfClass:[NSString class]])
             [paramsArray addObject:formParam];
         else if ([formParam.value isKindOfClass:[DXHTTPFormFileDescriptor class]])
-            [fileArray addObject:formParam];
+            [filesArray addObject:formParam];
     
-    [paramsString appendFormat:@"%@", [paramsArray componentsJoinedByString:@"&"]];
-    
-    [urlRequest setHTTPMethod:requestDescriptor.httpMethod];
+    //[urlRequest setHTTPMethod:requestDescriptor.httpMethod];
     
     if ([[urlRequest HTTPMethod] isEqualToString:@"POST"]) {
-        NSMutableArray *filesStreams = [NSMutableArray new];
+        DXHTTPFormBodyStreamBuilder *bodyStream = [[DXHTTPFormBodyStreamBuilder alloc] initWithFilesArrayAndParamsArray:filesArray paramsArray:paramsArray];
+        [bodyStream buildStream];
+        [urlRequest setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", [bodyStream boundary]] forHTTPHeaderField:@"Content-Type"];
+        [urlRequest setValue:[NSString stringWithFormat:@"%d", [bodyStream length]] forHTTPHeaderField:@"Content-Length"];
         
-        for (DXHTTPFormParam *fileParam in fileArray) {
-            DXHTTPFormFileBuilder *fileBuilder = [DXHTTPFormFileBuilder new];
-            NSInputStream * fileStream = [fileBuilder buildFileStream:fileParam.value];
-            
-            [filesStreams addObject:fileStream];
-        }
-        [urlRequest setHTTPBody:[paramsString dataUsingEncoding:NSUTF8StringEncoding]];
-    } else if ([[urlRequest HTTPMethod]isEqualToString:@"GET"])
+        [urlRequest setHTTPBodyStream:bodyStream];
+    } else if ([[urlRequest HTTPMethod]isEqualToString:@"GET"]) {
         [paramsString insertString:@"?" atIndex:0];
-        [urlRequest setURL:[NSURL URLWithString:paramsString]];
-    
+        [paramsString appendFormat:@"%@", [paramsArray componentsJoinedByString:@"&"]];
+        NSString *currentURL = [[urlRequest URL] absoluteString];
+        [urlRequest setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", currentURL, paramsString]]];
+    }
     return urlRequest;
 }
 

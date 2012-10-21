@@ -28,6 +28,8 @@ extern const struct DXHTTPMethod
 @property (nonatomic, strong, readonly) NSArray *params;
 @property (nonatomic, copy) NSString *httpMethod;
 @property (nonatomic, copy) NSString *path;
+@property (nonatomic, copy) NSString *baseURL;
+@property (nonatomic) NSTimeInterval timeOutInterval;
 
 - (void)addParam:(NSString *)key value:(id)value;
 
