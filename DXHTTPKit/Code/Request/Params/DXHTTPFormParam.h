@@ -1,5 +1,5 @@
 //
-//  DXParam.h
+//  DXHTTPFormParam.h
 //  DXHTTPKit
 //
 //  Created by TheSooth on 10/14/12.
@@ -15,5 +15,6 @@
 @property (nonatomic, copy, readonly) id value;
 
 - (id)initWithKey:(NSString *)aKey value:(id)aValue;
+- (NSString *)description;
 
 @end

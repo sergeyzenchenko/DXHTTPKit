@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "DXHTTPRequestDescriptor.h"
+#import "DXHTTPFormBodyStreamBuilder.h"
+#import "DXHTTPFormParamsBuilder.h"
+#import "DXHTTPHeadersBuilder.h"
+#import "DXHTTPURLRequestAdditionalsBuilder.h"
 
 @interface DXHTTPRequestBuilder : NSObject
 

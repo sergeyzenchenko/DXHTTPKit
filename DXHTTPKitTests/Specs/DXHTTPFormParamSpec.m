@@ -33,7 +33,7 @@ describe(@"DXFormParam", ^{
         });
         
         it(@"Should accept value as file desciptor instance", ^{
-            DXHTTPFormFileDescriptor *fileDescriptor = [DXHTTPFormFileDescriptor fileDescriptorWithPath:@"path"];
+            DXHTTPFormFileDescriptor *fileDescriptor = [DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/system.log"];
             [[theBlock(^{
                 formParam = [[DXHTTPFormParam alloc] initWithKey:stringKey value:fileDescriptor];
             }) shouldNot] raise];

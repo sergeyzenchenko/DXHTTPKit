@@ -11,7 +11,13 @@
 @implementation DXHTTPRequestBuilder
 
 - (NSURLRequest *)buildRequest:(DXHTTPRequestDescriptor *)requestDescriptor {
-    return nil;
+    NSURLRequest *urlRequest;
+    
+    urlRequest = [[DXHTTPURLRequestAdditionalsBuilder alloc] buildAdditionals:requestDescriptor];
+    urlRequest = [[DXHTTPFormParamsBuilder alloc] buildParams:requestDescriptor urlRequest:urlRequest];
+    urlRequest = [[DXHTTPHeadersBuilder alloc] buildHeaders:requestDescriptor.headers urlRequest:urlRequest];
+    
+    return urlRequest;
 }
 
 

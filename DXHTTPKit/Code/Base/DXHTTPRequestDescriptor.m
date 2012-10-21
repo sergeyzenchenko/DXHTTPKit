@@ -7,7 +7,6 @@
 //
 
 #import "DXHTTPRequestDescriptor.h"
-#import "DXHTTPErrors.h"
 
 static BOOL DXHTTPMethodIsValid(NSString *method)
 {

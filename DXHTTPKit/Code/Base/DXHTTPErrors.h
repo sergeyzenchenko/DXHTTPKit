@@ -9,8 +9,5 @@
 extern const struct DXHTTPErrors
 {
     __unsafe_unretained NSString *HTTPInvalidMethod;
+    __unsafe_unretained NSString *HTTPMethodIsEmpty;
 } DXHTTPErrors;
-
-const struct DXHTTPErrors DXHTTPErrors = {
-    .HTTPInvalidMethod = @"Invalid HTTP Method",
-};
