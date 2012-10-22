@@ -61,7 +61,6 @@
 /* Begin PBXFileReference section */
 		178C3258A7284934903EF15F /* libPods-DXHTTPKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DXHTTPKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6A58196C7C4D9A8DE45EAD /* Pods-DXHTTPKitTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DXHTTPKitTests.xcconfig"; path = "Pods/Pods-DXHTTPKitTests.xcconfig"; sourceTree = SOURCE_ROOT; };
-		ADE7EE38162CA5EB0061F3F8 /* DXHTTPFormBinaryDataValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXHTTPFormBinaryDataValue.h; sourceTree = "<group>"; };
 		ADFB0ABE162C99AB00AC5954 /* libDXHTTPKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDXHTTPKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFB0AC1162C99AB00AC5954 /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ADFB0AC5162C99AB00AC5954 /* DXHTTPKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DXHTTPKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -175,7 +174,6 @@
 		ADE7EE37162CA5E00061F3F8 /* FormBinaryData */ = {
 			isa = PBXGroup;
 			children = (
-				ADE7EE38162CA5EB0061F3F8 /* DXHTTPFormBinaryDataValue.h */,
 				EAB5F446162D870200A7E403 /* DXHTTPFormFileDescriptor.h */,
 				EAB5F447162D870200A7E403 /* DXHTTPFormFileDescriptor.m */,
 			);

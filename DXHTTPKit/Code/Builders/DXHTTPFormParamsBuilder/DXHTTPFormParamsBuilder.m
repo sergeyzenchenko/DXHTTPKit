@@ -1,5 +1,5 @@
 //
-//  DXHTTPFormParamBuilder.m
+//  DXHTTPFormParamsBuilder.m
 //  DXHTTPKit
 //
 //  Created by TheSooth on 10/19/12.
