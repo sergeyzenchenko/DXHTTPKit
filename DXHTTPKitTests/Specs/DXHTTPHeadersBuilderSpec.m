@@ -20,6 +20,7 @@ describe(@"DXHTTPHeadersBuilder", ^{
          urlRequest = [headersBuilder buildHeaders:headersStorage.headers urlRequest:urlRequest];
         [[[urlRequest valueForHTTPHeaderField:@"Cookies"] should] equal:@"login=111minutes"];
     });
+    
     it(@"Should return URLRequest with multiplie header values", ^{
         [headersStorage addHeader:@"Cookies" value:@"login=111minutes"];
         [headersStorage addHeader:@"Cookies" value:@"passwd=111"];
@@ -27,6 +28,7 @@ describe(@"DXHTTPHeadersBuilder", ^{
         urlRequest = [headersBuilder buildHeaders:headersStorage.headers urlRequest:urlRequest];
         [[[urlRequest valueForHTTPHeaderField:@"Cookies"] should] equal:@"login=111minutes; passwd=111"];
     });
+    
     it(@"Should return URLRequest with multipile headers", ^{
         [headersStorage addHeader:@"Cookies" value:@"login=111minutes"];
         [headersStorage addHeader:@"Host" value:@"localhost"];
