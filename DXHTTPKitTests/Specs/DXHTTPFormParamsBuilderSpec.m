@@ -14,12 +14,13 @@ describe(@"DXHTTPFormParamsBuilder", ^{
     beforeEach(^{
         paramsBuilder = [DXHTTPFormParamsBuilder new];
         requestDescriptor = [DXHTTPRequestDescriptor new];
-        urlRequest = [NSURLRequest new];
+        urlRequest = [[NSURLRequest alloc] init];
     });
     
     context(@"right values", ^{
         
         it(@"Should return urlRequest with builded url", ^{
+            [requestDescriptor setBaseURL:@"http://localhost"];
             [requestDescriptor addParam:@"login" value:@"111minutes"];
             [requestDescriptor setHttpMethod:DXHTTPMethod.GET];
             
@@ -37,18 +38,17 @@ describe(@"DXHTTPFormParamsBuilder", ^{
             [[[[urlRequest URL] absoluteString] should] equal:@"(null)?login=111minutes&passwd=111"];
         });
         it(@"Should return urlRequest bodyStream", ^{
+            NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest new];
             [requestDescriptor addParam:@"login" value:@"111minutes"];
             [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/system.log"]];
-            [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
+            [mutableURLRequest setHTTPMethod:DXHTTPMethod.POST];
             
-            urlRequest = [[DXHTTPURLRequestAdditionalsBuilder alloc] buildAdditionals:requestDescriptor];
-            urlRequest = [paramsBuilder buildParams:requestDescriptor urlRequest:urlRequest];
+            mutableURLRequest = [[paramsBuilder buildParams:requestDescriptor urlRequest:mutableURLRequest] mutableCopy];
             
-            [[[urlRequest HTTPBodyStream] should] beNonNil];
+            [[[mutableURLRequest HTTPBodyStream] should] beNonNil];
         });
         it(@"Should return urlRequest, url must be without FileDescriptor", ^{
             [requestDescriptor addParam:@"login" value:@"111minutes"];
-            [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/system.log"]];
             [requestDescriptor addParam:@"passwd" value:@"111"];
             [requestDescriptor setHttpMethod:DXHTTPMethod.GET];
             
@@ -59,12 +59,11 @@ describe(@"DXHTTPFormParamsBuilder", ^{
     });
     
     context(@"invalid values", ^{
-        it(@"Should throw exception in case of non string key type", ^{
+        it(@"Should throw exception in case of using files in GET method", ^{
             [[theBlock(^{
-                [requestDescriptor addParam:@"login" value:@"111minutes"];
-                
+                [requestDescriptor addParam:@"file" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/etc/hosts"]];
                 urlRequest = [paramsBuilder buildParams:requestDescriptor urlRequest:urlRequest];
-            }) should] raiseWithName:DXHTTPErrors.HTTPMethodIsEmpty];
+            }) should] raiseWithName:DXHTTPKitErrors.FilesOnNonPostMethod];
         });
         
     });

@@ -5,13 +5,14 @@
 SPEC_BEGIN(DXHTTPRequestBuilderSpec);
 
 describe(@"DXHTTPRequestBuilder", ^{
-    it(@"Should return HTTPBodyStream with param", ^{
+    it(@"Should return HTTPBodyStream with params", ^{
         NSString *boundary = [NSString stringWithFormat:@"DXHTTPKit-%@", [[NSProcessInfo processInfo] hostName]];
         DXHTTPRequestBuilder *requestBuilder = [DXHTTPRequestBuilder new];
         DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
         
         [requestDescriptor addParam:@"someParam" value:@"someValue"];
         [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
+        [requestDescriptor setBaseURL:@"http://localhost"];
         
         NSData *testData = [[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"someParam\"\r\n\r\nsomeValue\r\n--%@--\r\n", boundary, boundary] dataUsingEncoding:NSUTF8StringEncoding];
         
@@ -32,11 +33,10 @@ describe(@"DXHTTPRequestBuilder", ^{
         [[streamData should] equal:testData];
        
     });
-    it(@"Should return NSURL with params in URL", ^{
+    it(@"Should return URLRequest with params in URL", ^{
         DXHTTPRequestBuilder *requestBuilder = [DXHTTPRequestBuilder new];
         DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
         
-        [requestDescriptor addParam:@"userfile" value:[DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/etc/hosts"]];
         [requestDescriptor addParam:@"someParam" value:@"someValue"];
         
         [requestDescriptor addHeader:@"Cookies" value:@[@"login=111minutes", @"passwd=111min"]];

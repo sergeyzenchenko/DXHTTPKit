@@ -15,7 +15,7 @@
 #import "DXHTTPFormFileDescriptor.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-@interface DXHTTPFormFileElement : NSObject
+@interface DXHTTPFormPartElement : NSObject
 
 - (id)initWithFormFileParam:(DXHTTPFormParam *)fileParam  boundary:(NSString *)boundary;
 - (id)initWithFormParam:(DXHTTPFormParam *)formParam  boundary:(NSString *)boundary;

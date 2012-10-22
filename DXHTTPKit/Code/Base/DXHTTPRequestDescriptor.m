@@ -66,7 +66,7 @@ const struct DXHTTPMethod DXHTTPMethod = {
 
 - (void)setHttpMethod:(NSString *)aHttpMethod {
     
-    DXParametrAssert(DXHTTPMethodIsValid(aHttpMethod), DXHTTPErrors.HTTPInvalidMethod);
+    DXParametrAssert(DXHTTPMethodIsValid(aHttpMethod), DXHTTPKitErrors.HTTPInvalidMethod);
     
     _httpMethod = aHttpMethod;
 }
