@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 111Minutes. All rights reserved.
 //
 
-#import "DXHTTPFormFileElement.h"
+#import "DXHTTPFormPartElement.h"
 
-@interface DXHTTPFormFileElement() {
+@interface DXHTTPFormPartElement() {
     NSData *_partHeader;
     NSInputStream *_partBody;
     NSUInteger _partBodyLength, _partHeaderLength, _partLenght, _delivered;
 }
 @end
 
-@implementation DXHTTPFormFileElement
+@implementation DXHTTPFormPartElement
 
 - (id)initWithFormFileParam:(DXHTTPFormParam *)fileParam  boundary:(NSString *)boundary {
     self = [super init];
