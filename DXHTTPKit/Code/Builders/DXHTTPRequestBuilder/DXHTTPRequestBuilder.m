@@ -1,5 +1,5 @@
 //
-//  DXHTTPBuilder.m
+//  DXHTTPRequestBuilder.m
 //  DXHTTPKit
 //
 //  Created by TheSooth on 10/18/12.

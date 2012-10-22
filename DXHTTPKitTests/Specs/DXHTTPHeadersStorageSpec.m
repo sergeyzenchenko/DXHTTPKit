@@ -66,8 +66,6 @@ describe(@"Headers Storage", ^{
             }) should] raiseWithName:NSInternalInconsistencyException];
         });
     });
-    
-    
 });
 
 

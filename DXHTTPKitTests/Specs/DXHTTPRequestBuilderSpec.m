@@ -5,10 +5,18 @@
 SPEC_BEGIN(DXHTTPRequestBuilderSpec);
 
 describe(@"DXHTTPRequestBuilder", ^{
+    __block DXHTTPRequestBuilder *requestBuilder;
+    __block DXHTTPRequestDescriptor *requestDescriptor;
+    __block NSURLRequest *urlRequest;
+    
+    beforeEach(^{
+        requestDescriptor = [DXHTTPRequestDescriptor new];
+        requestBuilder = [DXHTTPRequestBuilder new];
+        urlRequest = [NSURLRequest new];
+    });
+    
     it(@"Should return HTTPBodyStream with params", ^{
         NSString *boundary = [NSString stringWithFormat:@"DXHTTPKit-%@", [[NSProcessInfo processInfo] hostName]];
-        DXHTTPRequestBuilder *requestBuilder = [DXHTTPRequestBuilder new];
-        DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
         
         [requestDescriptor addParam:@"someParam" value:@"someValue"];
         [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
@@ -16,7 +24,7 @@ describe(@"DXHTTPRequestBuilder", ^{
         
         NSData *testData = [[NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"someParam\"\r\n\r\nsomeValue\r\n--%@--\r\n", boundary, boundary] dataUsingEncoding:NSUTF8StringEncoding];
         
-        NSURLRequest *urlRequest = [requestBuilder buildRequest:requestDescriptor];
+        urlRequest = [requestBuilder buildRequest:requestDescriptor];
         NSInputStream *bodyStream = [urlRequest HTTPBodyStream];
         [bodyStream open];
         
@@ -34,9 +42,6 @@ describe(@"DXHTTPRequestBuilder", ^{
        
     });
     it(@"Should return URLRequest with params in URL", ^{
-        DXHTTPRequestBuilder *requestBuilder = [DXHTTPRequestBuilder new];
-        DXHTTPRequestDescriptor *requestDescriptor = [DXHTTPRequestDescriptor new];
-        
         [requestDescriptor addParam:@"someParam" value:@"someValue"];
         
         [requestDescriptor addHeader:@"Cookies" value:@[@"login=111minutes", @"passwd=111min"]];
@@ -46,8 +51,6 @@ describe(@"DXHTTPRequestBuilder", ^{
         [requestDescriptor setBaseURL:@"http://localhost"];
         [requestDescriptor setPath:@"/~thesooth/upload.php"];
         [requestDescriptor setTimeOutInterval:10];
-        
-        NSURLRequest *urlRequest = [NSURLRequest new];
         
         urlRequest = [[DXHTTPURLRequestAdditionalsBuilder alloc] buildAdditionals:requestDescriptor];
         

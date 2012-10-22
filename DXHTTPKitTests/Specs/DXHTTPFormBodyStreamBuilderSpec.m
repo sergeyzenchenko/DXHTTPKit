@@ -5,6 +5,8 @@
 
 SPEC_BEGIN(DXHTTPFormBodyStreamBuilderSpec)
 
+describe(@"DXHTTPFormBodyStreamBuilder", ^{
+    
     __block NSString *fileName = @"/etc/hosts";
     __block NSString *boundary = [NSString stringWithFormat:@"DXHTTPKit-%@", [[NSProcessInfo processInfo] hostName]];
     __block DXHTTPRequestDescriptor *requestDescriptor;
@@ -13,8 +15,6 @@ SPEC_BEGIN(DXHTTPFormBodyStreamBuilderSpec)
     __block NSMutableData *streamData;
     __block NSUInteger bytesRead;
     __block unsigned int len;
-
-describe(@"DXHTTPFormBodyStreamBuilder", ^{
     
     beforeEach(^{
         bytesRead = 0;
