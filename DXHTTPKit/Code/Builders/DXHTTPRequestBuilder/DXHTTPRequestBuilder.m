@@ -13,9 +13,9 @@
 - (NSURLRequest *)buildRequest:(DXHTTPRequestDescriptor *)requestDescriptor {
     NSURLRequest *urlRequest;
     
-    urlRequest = [[DXHTTPURLRequestAdditionalsBuilder alloc] buildAdditionals:requestDescriptor];
-    urlRequest = [[DXHTTPFormParamsBuilder alloc] buildParams:requestDescriptor urlRequest:urlRequest];
-    urlRequest = [[DXHTTPHeadersBuilder alloc] buildHeaders:requestDescriptor.headers urlRequest:urlRequest];
+    urlRequest = [[DXHTTPURLRequestAdditionalsBuilder new] buildAdditionals:requestDescriptor];
+    urlRequest = [[DXHTTPFormParamsBuilder new] buildParams:requestDescriptor urlRequest:urlRequest];
+    urlRequest = [[DXHTTPHeadersBuilder new] buildHeaders:requestDescriptor.headers urlRequest:urlRequest];
     
     return urlRequest;
 }

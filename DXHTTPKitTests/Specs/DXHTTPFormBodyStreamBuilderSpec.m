@@ -25,7 +25,7 @@ describe(@"DXHTTPFormBodyStreamBuilder", ^{
         requestDescriptor = [DXHTTPRequestDescriptor new];
     });
     
-    it(@"Should a return input stream", ^{
+    it(@"Should return bodyStream with file", ^{
         NSString *testHeaderPart = [NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"userfile\"; filename=\"%@\"\r\nContent-Type: application/octet-stream\r\n\r\n", boundary, [fileName lastPathComponent]];
         NSData *testFileData = [NSData dataWithContentsOfFile:fileName];
         NSString *testFooterPart = [NSString stringWithFormat:@"\r\n--%@--\r\n", boundary];
@@ -38,7 +38,7 @@ describe(@"DXHTTPFormBodyStreamBuilder", ^{
         [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
         
         [urlRequest setHTTPMethod:DXHTTPMethod.POST];
-        urlRequest = [[[DXHTTPFormParamsBuilder alloc] buildParams:requestDescriptor urlRequest:[urlRequest copy]] mutableCopy];
+        urlRequest = [[[DXHTTPFormParamsBuilder new] buildParams:requestDescriptor urlRequest:[urlRequest copy]] mutableCopy];
         
         NSInputStream *bodyStream = [urlRequest HTTPBodyStream];
         [bodyStream open];
@@ -52,7 +52,8 @@ describe(@"DXHTTPFormBodyStreamBuilder", ^{
         
         [[streamData should] equal:testBodyData];
     });
-    it(@"Should a return input stream with file and param in body stream", ^{
+    
+    it(@"Should return bodyStream with file and param", ^{
         NSString *testFileHeaderPart = [NSString stringWithFormat:@"--%@\r\nContent-Disposition: form-data; name=\"userfile\"; filename=\"%@\"\r\nContent-Type: application/octet-stream\r\n\r\n", boundary, [fileName lastPathComponent]];
         NSData *testFileData = [NSData dataWithContentsOfFile:fileName];
         NSMutableData *testBodyData  = [NSMutableData new];
@@ -68,7 +69,7 @@ describe(@"DXHTTPFormBodyStreamBuilder", ^{
         [requestDescriptor setHttpMethod:DXHTTPMethod.POST];
         
         [urlRequest setHTTPMethod:DXHTTPMethod.POST];
-        urlRequest = [[[DXHTTPFormParamsBuilder alloc] buildParams:requestDescriptor urlRequest:[urlRequest copy]] mutableCopy];
+        urlRequest = [[[DXHTTPFormParamsBuilder new] buildParams:requestDescriptor urlRequest:[urlRequest copy]] mutableCopy];
         
         NSInputStream *bodyStream = [urlRequest HTTPBodyStream];
         [bodyStream open];
@@ -81,7 +82,6 @@ describe(@"DXHTTPFormBodyStreamBuilder", ^{
         }
         
         [[streamData should] equal:testBodyData];
-        
     });
 });
 
