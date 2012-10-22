@@ -9,7 +9,6 @@ describe(@"DXHTTPFormFileDescriptor", ^{
         DXHTTPFormFileDescriptor *file = [DXHTTPFormFileDescriptor fileDescriptorWithPath:@"/var/log/system.log"];
         [[theValue(file.filePath) should] equal:theValue(@"/var/log/system.log")];
     });
-    
 });
 
 SPEC_END

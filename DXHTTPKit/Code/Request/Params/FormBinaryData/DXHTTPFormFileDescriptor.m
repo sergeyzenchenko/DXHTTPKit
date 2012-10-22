@@ -1,5 +1,5 @@
 //
-//  DXFile.m
+//  DXHTTPFormFileDescriptor.m
 //  DXHTTPKit
 //
 //  Created by TheSooth on 10/14/12.

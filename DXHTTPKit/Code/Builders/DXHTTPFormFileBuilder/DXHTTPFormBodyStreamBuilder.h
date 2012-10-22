@@ -1,5 +1,5 @@
 //
-//  DXHTTPFormFileBuilder.h
+//  DXHTTPFormBodyStreamBuilder.h
 //  DXHTTPKit
 //
 //  Created by TheSooth on 10/20/12.

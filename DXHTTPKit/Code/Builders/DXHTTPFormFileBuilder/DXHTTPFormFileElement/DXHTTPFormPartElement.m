@@ -1,8 +1,8 @@
 //
-//  DXHTTPFormFileElement.m
+//  DXHTTPFormPartElement.m
 //  DXHTTPKit
 //
-//  Created by dev2 on 10/20/12.
+//  Created by TheSooth on 10/20/12.
 //  Copyright (c) 2012 111Minutes. All rights reserved.
 //
 

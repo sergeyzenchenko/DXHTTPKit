@@ -65,10 +65,7 @@ describe(@"DXHTTPFormParamsBuilder", ^{
                 urlRequest = [paramsBuilder buildParams:requestDescriptor urlRequest:urlRequest];
             }) should] raiseWithName:DXHTTPKitErrors.FilesOnNonPostMethod];
         });
-        
     });
-    
-    
 });
 
 SPEC_END
