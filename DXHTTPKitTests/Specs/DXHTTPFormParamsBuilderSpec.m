@@ -28,6 +28,7 @@ describe(@"DXHTTPFormParamsBuilder", ^{
             
             [[[[urlRequest URL] absoluteString] should] equal:@"(null)?login=111minutes"];
         });
+        
         it(@"Should return urlRequest with multipile params in url", ^{
             [requestDescriptor addParam:@"login" value:@"111minutes"];
             [requestDescriptor addParam:@"passwd" value:@"111"];
@@ -37,6 +38,7 @@ describe(@"DXHTTPFormParamsBuilder", ^{
             
             [[[[urlRequest URL] absoluteString] should] equal:@"(null)?login=111minutes&passwd=111"];
         });
+        
         it(@"Should return urlRequest bodyStream", ^{
             NSMutableURLRequest *mutableURLRequest = [NSMutableURLRequest new];
             [requestDescriptor addParam:@"login" value:@"111minutes"];
@@ -47,6 +49,7 @@ describe(@"DXHTTPFormParamsBuilder", ^{
             
             [[[mutableURLRequest HTTPBodyStream] should] beNonNil];
         });
+        
         it(@"Should return urlRequest, url must be without FileDescriptor", ^{
             [requestDescriptor addParam:@"login" value:@"111minutes"];
             [requestDescriptor addParam:@"passwd" value:@"111"];

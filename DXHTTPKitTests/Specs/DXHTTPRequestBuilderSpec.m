@@ -41,18 +41,16 @@ describe(@"DXHTTPRequestBuilder", ^{
         [[streamData should] equal:testData];
        
     });
-    it(@"Should return URLRequest with params in URL", ^{
+    
+    it(@"Should add params to URL in GET request", ^{
         [requestDescriptor addParam:@"someParam" value:@"someValue"];
-        
-        [requestDescriptor addHeader:@"Cookies" value:@[@"login=111minutes", @"passwd=111min"]];
         
         [requestDescriptor setHttpMethod:DXHTTPMethod.GET];
         
         [requestDescriptor setBaseURL:@"http://localhost"];
         [requestDescriptor setPath:@"/~thesooth/upload.php"];
-        [requestDescriptor setTimeOutInterval:10];
         
-        urlRequest = [[DXHTTPURLRequestAdditionalsBuilder alloc] buildAdditionals:requestDescriptor];
+        urlRequest = [[DXHTTPURLRequestAdditionalsBuilder new] buildAdditionals:requestDescriptor];
         
         urlRequest = [requestBuilder buildRequest:requestDescriptor];
         

@@ -47,6 +47,7 @@ describe(@"DXFormParam", ^{
                 formParam = [[DXHTTPFormParam alloc] initWithKey:@"key" value:@[]];
             }) should] raiseWithName:NSInternalInconsistencyException];
         });
+        
         it(@"Should throw an exception in case of nil value class", ^{
             [[theBlock(^{
                 formParam = [[DXHTTPFormParam alloc] initWithKey:@"key" value:nil];
