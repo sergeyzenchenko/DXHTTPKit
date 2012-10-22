@@ -20,7 +20,7 @@
 
 @implementation DXHTTPFormBodyStreamBuilder
 
-- (id)initWithFiles:(NSArray *)aFilesArray andParamsArray:(NSArray *)aParamsArray {
+- (id)initWithFiles:(NSArray *)aFilesArray paramsArray:(NSArray *)aParamsArray {
     self = [super init];
     if (self) {
         _filesArray  = aFilesArray;
@@ -36,13 +36,13 @@
 
 - (void)buildStream {
     for (DXHTTPFormParam *fileElement in _filesArray) {
-        [_parts addObject:[[DXHTTPFormFileElement alloc] initWithFormFileParam:fileElement boundary:_boundary]];
+        [_parts addObject:[[DXHTTPFormPartElement alloc] initWithFormFileParam:fileElement boundary:_boundary]];
         
         [self updateLength];
     }
     
     for (DXHTTPFormParam *paramElement in _paramsArray) {
-        [_parts addObject:[[DXHTTPFormFileElement alloc] initWithFormParam:paramElement boundary:_boundary]];
+        [_parts addObject:[[DXHTTPFormPartElement alloc] initWithFormParam:paramElement boundary:_boundary]];
         
         [self updateLength];
     }
@@ -95,7 +95,7 @@
 - (void)updateLength
 {
     _length     = _footerLength;
-    for (DXHTTPFormFileElement *fe in _parts)
+    for (DXHTTPFormPartElement *fe in _parts)
     {
         _length += [fe partLenght];
     }

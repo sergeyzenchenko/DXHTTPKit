@@ -13,6 +13,8 @@
 - (NSURLRequest *)buildAdditionals:(DXHTTPRequestDescriptor *)requestDescrioptor {
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
     
+    DXParametrAssert(requestDescrioptor.baseURL != nil, DXHTTPKitErrors.EmptyBaseURL);
+    
     [urlRequest setHTTPMethod:requestDescrioptor.httpMethod];
     [urlRequest setTimeoutInterval:requestDescrioptor.timeOutInterval];
     [urlRequest setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", requestDescrioptor.baseURL, requestDescrioptor.path]]];

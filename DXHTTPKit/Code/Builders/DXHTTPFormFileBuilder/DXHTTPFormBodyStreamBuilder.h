@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "DXHTTPRequestDescriptor.h"
-#import "DXHTTPFormFileElement.h"
+#import "DXHTTPFormPartElement.h"
 
 @interface DXHTTPFormBodyStreamBuilder : NSInputStream
 
-- (id)initWithFiles:(NSArray *)aFilesArray andParamsArray:(NSArray *)aParamsArray;
+- (id)initWithFiles:(NSArray *)aFilesArray paramsArray:(NSArray *)aParamsArray;
 
 - (void)buildStream;
 
