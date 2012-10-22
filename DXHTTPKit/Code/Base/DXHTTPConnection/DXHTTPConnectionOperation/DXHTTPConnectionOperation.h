@@ -13,4 +13,7 @@
 
 - (id)initWithURLRequest:(NSURLRequest *)aURLRequest;
 
+@property (nonatomic, readonly) NSData *connectionData;
+@property (nonatomic, strong, readonly) NSURLConnection *urlConnection;
+
 @end

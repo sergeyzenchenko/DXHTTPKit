@@ -14,6 +14,7 @@
     NSMutableData *_connectionData;
     NSMutableDictionary *_connectionResponseHeaders;
     BOOL _executing;
+    BOOL _finished;
 }
 
 @end
@@ -30,25 +31,18 @@
 }
 
 - (void)start {
+    _executing = YES;
     [self performSelector:@selector(connectionOpeartionDidStart) onThread:[DXHTTPConnectionThread requestConnectionThread] withObject:nil waitUntilDone:NO];
     
 }
 
 - (void)connectionOpeartionDidStart {
-    _executing = YES;
     _urlConnection = [[NSURLConnection alloc] initWithRequest:_urlRequest delegate:self];
     NSRunLoop *connectionRunLoop = [NSRunLoop currentRunLoop];
     [_urlConnection scheduleInRunLoop:connectionRunLoop forMode:NSRunLoopCommonModes];
     [_urlConnection start];
 }
 
-- (BOOL)isExecuting {
-    return _executing;
-}
-
-- (BOOL)isConcurrent {
-    return YES;
-}
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     [_connectionData setLength:0];
@@ -59,7 +53,27 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    _executing = NO;
+    
+}
+
+- (NSData *)connectionData {
+    return _connectionData;
+}
+
+- (NSURLConnection *)urlConnection {
+    return _urlConnection;
+}
+
+- (BOOL)isExecuting {
+    return _executing;
+}
+
+- (BOOL)isFinished {
+    return _finished;
+}
+
+- (BOOL)isConcurrent {
+    return YES;
 }
 
 @end
